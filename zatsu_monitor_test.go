@@ -24,16 +24,6 @@ func TestZatsuMonitor_CheckUrl_Ng(t *testing.T) {
 	assert.Equal(t, false, actual)
 }
 
-func PutData(key string, value string) {
-	db, err := leveldb.OpenFile(TEST_DB_FILE, nil)
-	if err != nil {
-		panic("Failed: OpenFile " + TEST_DB_FILE)
-	}
-	defer db.Close()
-
-	db.Put([]byte(key), []byte(value), nil)
-}
-
 func DeleteData(key string) {
 	db, err := leveldb.OpenFile(TEST_DB_FILE, nil)
 	if err != nil {
@@ -45,19 +35,19 @@ func DeleteData(key string) {
 }
 
 func TestZatsuMonitor_GetDbStatus_ExistsTrue(t *testing.T) {
-	PutData("key", STATUS_TRUE)
+	z := NewTestZatsuMonitor()
+	z.SaveDbStatus("key", true)
 	defer DeleteData("key")
 
-	z := NewTestZatsuMonitor()
 	actual := z.GetDbStatus("key")
 	assert.Equal(t, true, actual)
 }
 
 func TestZatsuMonitor_GetDbStatus_ExistsFalse(t *testing.T) {
-	PutData("key", STATUS_FALSE)
+	z := NewTestZatsuMonitor()
+	z.SaveDbStatus("key", false)
 	defer DeleteData("key")
 
-	z := NewTestZatsuMonitor()
 	actual := z.GetDbStatus("key")
 	assert.Equal(t, false, actual)
 }

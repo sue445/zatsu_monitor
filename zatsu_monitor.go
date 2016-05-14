@@ -65,3 +65,19 @@ func (z ZatsuMonitor) GetDbStatus(key string) bool {
 		panic("Unknown value: " + value)
 	}
 }
+
+func (z ZatsuMonitor) SaveDbStatus(key string, value bool) {
+	db, err := leveldb.OpenFile(z.databaseFile, nil)
+	if err != nil {
+		panic("Failed: OpenFile " + z.databaseFile)
+	}
+	defer db.Close()
+
+	var data string
+	if value {
+		data = STATUS_TRUE
+	} else {
+		data = STATUS_FALSE
+	}
+	db.Put([]byte(key), []byte(data), nil)
+}
