@@ -1,0 +1,11 @@
+name1:
+  check_url: "http://example.com/1"
+  type: slack
+  webhook_url: "https://hooks.slack.com/services/AAAAAAAAA/BBBBBBBB/CCCCCCCCCCCCC"
+  user_name: "zatsu_monitor"
+  channel: "#general"
+name2:
+  check_url: "http://example.com/2"
+  type: chatwork
+  api_token: "AAAAAAAA"
+  room_id: 111111
