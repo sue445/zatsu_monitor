@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/joho/godotenv"
+	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
 )
@@ -23,9 +24,11 @@ func TestMain(m *testing.M) {
 }
 
 func TestChatworkNotifier_PostStatus_True(t *testing.T) {
-	notifier.PostStatus("https://www.google.co.jp/", 200, true)
+	err := notifier.PostStatus("https://www.google.co.jp/", 200)
+	assert.NoError(t, err)
 }
 
 func TestChatworkNotifier_PostStatus_False(t *testing.T) {
-	notifier.PostStatus("https://www.google.co.jp/aaa", 404, false)
+	err := notifier.PostStatus("https://www.google.co.jp/aaa", 404)
+	assert.NoError(t, err)
 }
