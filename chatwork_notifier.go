@@ -5,32 +5,30 @@ import (
 	chatwork "github.com/griffin-stewie/go-chatwork"
 )
 
+var expectedKeys = []string{"type", "check_url", "room_id", "api_token"}
+
 type ChatworkNotifier struct {
 	apiToken string
 	roomId   string
 }
 
 func NewChatworkNotifier(apiToken string, roomId string) *ChatworkNotifier {
-	if len(apiToken) == 0 {
-		panic("apiToken is required")
-	}
-
-	if len(roomId) == 0 {
-		panic("roomId is required")
-	}
-
 	c := new(ChatworkNotifier)
 	c.apiToken = apiToken
 	c.roomId = roomId
 	return c
 }
 
-func (c ChatworkNotifier) PostStatus(checkUrl string, statusCode int) error {
+func (c ChatworkNotifier) ExpectedKeys() []string {
+	return expectedKeys
+}
+
+func (c ChatworkNotifier) PostStatus(checkUrl string, beforeStatusCode int, currentStatusCode int) error {
 	chatwork := chatwork.NewClient(c.apiToken)
 
 	var statusText string
 
-	successful := IsSuccessfulStatus(statusCode)
+	successful := IsSuccessfulStatus(currentStatusCode)
 
 	if successful {
 		statusText = "ok (F)"
@@ -38,7 +36,7 @@ func (c ChatworkNotifier) PostStatus(checkUrl string, statusCode int) error {
 		statusText = "down (devil)"
 	}
 
-	message := fmt.Sprintf("[info][title]%s is %s[/title]statusCode=%d[/info]", checkUrl, statusText, statusCode)
+	message := fmt.Sprintf("[info][title]%s is %s[/title]statusCode: %d -> %d[/info]", checkUrl, statusText, beforeStatusCode, currentStatusCode)
 
 	_, err := chatwork.PostRoomMessage(c.roomId, message)
 

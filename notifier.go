@@ -1,5 +1,6 @@
 package main
 
 type Notifier interface {
-	PostStatus(string, int, bool)
+	PostStatus(string, int, int) error
+	ExpectedKeys() []string
 }
