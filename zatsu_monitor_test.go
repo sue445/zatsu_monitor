@@ -56,3 +56,11 @@ func TestZatsuMonitor_GetDbStatus_NotExists(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, 0, actual)
 }
+
+func TestZatsuMonitor_IsSuccessful(t *testing.T) {
+	assert.Equal(t, false, IsSuccessfulStatus(0))
+	assert.Equal(t, true, IsSuccessfulStatus(200))
+	assert.Equal(t, true, IsSuccessfulStatus(302))
+	assert.Equal(t, false, IsSuccessfulStatus(404))
+	assert.Equal(t, false, IsSuccessfulStatus(502))
+}

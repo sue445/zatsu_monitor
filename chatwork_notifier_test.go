@@ -23,9 +23,9 @@ func TestMain(m *testing.M) {
 }
 
 func TestChatworkNotifier_PostStatus_True(t *testing.T) {
-	notifier.PostStatus("https://www.google.co.jp/", 200, true)
+	notifier.PostStatus("https://www.google.co.jp/", 200)
 }
 
 func TestChatworkNotifier_PostStatus_False(t *testing.T) {
-	notifier.PostStatus("https://www.google.co.jp/aaa", 404, false)
+	notifier.PostStatus("https://www.google.co.jp/aaa", 404)
 }

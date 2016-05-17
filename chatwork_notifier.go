@@ -25,10 +25,12 @@ func NewChatworkNotifier(apiToken string, roomId string) *ChatworkNotifier {
 	return c
 }
 
-func (c ChatworkNotifier) PostStatus(checkUrl string, statusCode int, successful bool) {
+func (c ChatworkNotifier) PostStatus(checkUrl string, statusCode int) {
 	chatwork := chatwork.NewClient(c.apiToken)
 
 	var statusText string
+
+	successful := IsSuccessfulStatus(statusCode)
 
 	if successful {
 		statusText = "ok (F)"

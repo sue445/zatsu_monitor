@@ -7,8 +7,6 @@ import (
 	"net/http"
 )
 
-var OK_STATUS_CODES = []int{200, 301, 302, 303, 304, 307, 308}
-
 type ZatsuMonitor struct {
 	databaseFile string
 }
@@ -61,4 +59,11 @@ func (z ZatsuMonitor) SaveDbStatus(key string, status int) error {
 	db.Put([]byte(key), buf, nil)
 
 	return nil
+}
+
+func IsSuccessfulStatus(status int) bool {
+	n := status / 100
+
+	// Successful: 2xx, 3xx
+	return n == 2 || n == 3
 }
