@@ -14,14 +14,18 @@ func NewTestZatsuMonitor() *ZatsuMonitor {
 
 func TestZatsuMonitor_CheckUrl_Ok(t *testing.T) {
 	z := NewTestZatsuMonitor()
-	actual := z.CheckUrl("https://www.google.co.jp/")
-	assert.Equal(t, true, actual)
+	actual, err := z.CheckUrl("https://www.google.co.jp/")
+
+	assert.NoError(t, err)
+	assert.Equal(t, 200, actual)
 }
 
 func TestZatsuMonitor_CheckUrl_Ng(t *testing.T) {
 	z := NewTestZatsuMonitor()
-	actual := z.CheckUrl("https://www.google.co.jp/aaa")
-	assert.Equal(t, false, actual)
+	actual, err := z.CheckUrl("https://www.google.co.jp/aaa")
+
+	assert.NoError(t, err)
+	assert.Equal(t, 404, actual)
 }
 
 func DeleteData(key string) {
@@ -34,26 +38,21 @@ func DeleteData(key string) {
 	db.Delete([]byte(key), nil)
 }
 
-func TestZatsuMonitor_GetDbStatus_ExistsTrue(t *testing.T) {
+func TestZatsuMonitor_GetDbStatus_Exists(t *testing.T) {
 	z := NewTestZatsuMonitor()
-	z.SaveDbStatus("key", true)
+	z.SaveDbStatus("key", 200)
 	defer DeleteData("key")
 
-	actual := z.GetDbStatus("key")
-	assert.Equal(t, true, actual)
-}
+	actual, err := z.GetDbStatus("key")
 
-func TestZatsuMonitor_GetDbStatus_ExistsFalse(t *testing.T) {
-	z := NewTestZatsuMonitor()
-	z.SaveDbStatus("key", false)
-	defer DeleteData("key")
-
-	actual := z.GetDbStatus("key")
-	assert.Equal(t, false, actual)
+	assert.NoError(t, err)
+	assert.Equal(t, 200, actual)
 }
 
 func TestZatsuMonitor_GetDbStatus_NotExists(t *testing.T) {
 	z := NewTestZatsuMonitor()
-	actual := z.GetDbStatus("key")
-	assert.Equal(t, true, actual)
+	actual, err := z.GetDbStatus("key")
+
+	assert.NoError(t, err)
+	assert.Equal(t, 0, actual)
 }
