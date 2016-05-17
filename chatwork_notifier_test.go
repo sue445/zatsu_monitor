@@ -24,11 +24,11 @@ func TestMain(m *testing.M) {
 }
 
 func TestChatworkNotifier_PostStatus_True(t *testing.T) {
-	err := notifier.PostStatus("https://www.google.co.jp/", 200)
+	err := notifier.PostStatus("https://www.google.co.jp/", 0, 200)
 	assert.NoError(t, err)
 }
 
 func TestChatworkNotifier_PostStatus_False(t *testing.T) {
-	err := notifier.PostStatus("https://www.google.co.jp/aaa", 404)
+	err := notifier.PostStatus("https://www.google.co.jp/aaa", 0, 404)
 	assert.NoError(t, err)
 }
