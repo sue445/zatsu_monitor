@@ -41,12 +41,12 @@ func (z ZatsuMonitor) GetDbStatus(key string) (int, error) {
 	data, err := db.Get([]byte(key), nil)
 
 	buf := bytes.NewBuffer(data)
-	status, _ := binary.Varint(buf.Bytes())
+	statusCode, _ := binary.Varint(buf.Bytes())
 
-	return int(status), nil
+	return int(statusCode), nil
 }
 
-func (z ZatsuMonitor) SaveDbStatus(key string, status int) error {
+func (z ZatsuMonitor) SaveDbStatus(key string, statusCode int) error {
 	db, err := leveldb.OpenFile(z.databaseFile, nil)
 	if err != nil {
 		return err
@@ -54,15 +54,15 @@ func (z ZatsuMonitor) SaveDbStatus(key string, status int) error {
 	defer db.Close()
 
 	buf := make([]byte, binary.MaxVarintLen32)
-	binary.PutVarint(buf, int64(status))
+	binary.PutVarint(buf, int64(statusCode))
 
 	db.Put([]byte(key), buf, nil)
 
 	return nil
 }
 
-func IsSuccessfulStatus(status int) bool {
-	n := status / 100
+func IsSuccessfulStatus(statusCode int) bool {
+	n := statusCode / 100
 
 	// Successful: 2xx, 3xx
 	return n == 2 || n == 3

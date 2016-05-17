@@ -25,7 +25,7 @@ func NewChatworkNotifier(apiToken string, roomId string) *ChatworkNotifier {
 	return c
 }
 
-func (c ChatworkNotifier) PostStatus(checkUrl string, statusCode int) {
+func (c ChatworkNotifier) PostStatus(checkUrl string, statusCode int) error {
 	chatwork := chatwork.NewClient(c.apiToken)
 
 	var statusText string
@@ -41,7 +41,6 @@ func (c ChatworkNotifier) PostStatus(checkUrl string, statusCode int) {
 	message := fmt.Sprintf("[info][title]%s is %s[/title]statusCode=%d[/info]", checkUrl, statusText, statusCode)
 
 	_, err := chatwork.PostRoomMessage(c.roomId, message)
-	if err != nil {
-		panic(fmt.Sprintf("Can not post message: %v", err))
-	}
+
+	return err
 }
