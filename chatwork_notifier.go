@@ -5,7 +5,7 @@ import (
 	chatwork "github.com/griffin-stewie/go-chatwork"
 )
 
-var expectedKeys = []string{"type", "check_url", "room_id", "api_token"}
+var chatworkExpectedKeys = []string{"type", "check_url", "room_id", "api_token"}
 
 type ChatworkNotifier struct {
 	apiToken string
@@ -20,7 +20,7 @@ func NewChatworkNotifier(apiToken string, roomId string) *ChatworkNotifier {
 }
 
 func (c ChatworkNotifier) ExpectedKeys() []string {
-	return expectedKeys
+	return chatworkExpectedKeys
 }
 
 func (c ChatworkNotifier) PostStatus(checkUrl string, beforeStatusCode int, currentStatusCode int) error {
