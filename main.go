@@ -29,11 +29,11 @@ func main() {
 	}
 
 	for name, values := range config {
-		parse(name, values)
+		perform(name, values)
 	}
 }
 
-func parse(name string, values map[string]string) {
+func perform(name string, values map[string]string) {
 	notifier_type := values["type"]
 
 	var notifier Notifier
