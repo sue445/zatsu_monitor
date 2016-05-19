@@ -40,7 +40,7 @@ func main() {
 }
 
 func printVersion() {
-	fmt.Printf("zazsu_monitor v%s\n", VERSION)
+	fmt.Printf("zatsu_monitor v%s\n", VERSION)
 }
 
 func perform(name string, values map[string]string) {
