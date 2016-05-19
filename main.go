@@ -7,16 +7,23 @@ import (
 )
 
 var configFile, dataDir, configName string
+var isPrintVersion bool
 
 func init() {
 	flag.StringVar(&configFile, "config", "", "Path to config file")
 	flag.StringVar(&dataDir, "data", "", "Path to data dir for cache")
 	flag.StringVar(&configName, "name", "", "Name for url checking (default: all)")
+	flag.BoolVar(&isPrintVersion, "version", false, "Whether showing version")
 
 	flag.Parse()
 }
 
 func main() {
+	if isPrintVersion {
+		printVersion()
+		return
+	}
+
 	if len(configFile) == 0 || len(dataDir) == 0 {
 		flag.PrintDefaults()
 		return
@@ -31,6 +38,10 @@ func main() {
 	for name, values := range config {
 		perform(name, values)
 	}
+}
+
+func printVersion() {
+	fmt.Printf("zazsu_monitor v%s\n", VERSION)
 }
 
 func perform(name string, values map[string]string) {
