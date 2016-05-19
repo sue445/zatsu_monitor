@@ -32,7 +32,7 @@ func TestSlackNotifier_PostStatus_Successful(t *testing.T) {
 		return
 	}
 
-	err := notifier.PostStatus("https://www.google.co.jp/", 0, 200)
+	err := notifier.PostStatus("https://www.google.co.jp/", 500, 200)
 	assert.NoError(t, err)
 }
 
