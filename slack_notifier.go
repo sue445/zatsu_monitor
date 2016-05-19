@@ -5,7 +5,7 @@ import (
 	"github.com/nlopes/slack"
 )
 
-var slackExpectedKeys = []string{"type", "check_url", "webhook_url", "user_name", "channel"}
+var slackExpectedKeys = []string{"type", "check_url", "token", "channel"}
 
 type SlackNotifier struct {
 	token    string
@@ -16,8 +16,14 @@ type SlackNotifier struct {
 func NewSlackNotifier(token string, userName string, channel string) *SlackNotifier {
 	s := new(SlackNotifier)
 	s.token = token
-	s.userName = userName
 	s.channel = channel
+
+	if len(userName) == 0 {
+		s.userName = "zatsu_monitor"
+	} else{
+		s.userName = userName
+	}
+
 	return s
 }
 
