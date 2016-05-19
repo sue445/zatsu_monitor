@@ -4,13 +4,23 @@
 
 readonly DIST_DIR="dist"
 readonly BIN_NAME="zatsu_monitor"
-# TODO: get from version file
-readonly VERSION="0.1.0"
+
+# get version from version.go
+function get_version(){
+    if [  `which gsed | wc -l` = "1" ]; then
+        # Use GNU sed instead of BSD sed (for Mac)
+        local _sed="gsed"
+    else
+        local _sed="sed"
+    fi
+
+    grep VERSION version.go | $_sed -r 's/.+?"([0-9.]+)".+?/\1/g'
+}
 
 function build(){
     local goos=$1
     local goarch=$2
-    local zip_name="${BIN_NAME}_${VERSION}_${goos}_${goarch}.zip"
+    local zip_name="${BIN_NAME}_${version}_${goos}_${goarch}.zip"
 
     GOOS=$goos GOARCH=$goarch go build -o "${DIST_DIR}/${BIN_NAME}" *.go
 
@@ -21,6 +31,8 @@ function build(){
 
     echo "Write: ${DIST_DIR}/${zip_name}"
 }
+
+version=`get_version`
 
 build "darwin" "amd64"
 build "linux" "amd64"
