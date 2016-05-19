@@ -52,7 +52,7 @@ func perform(name string, values map[string]string) {
 	case "chatwork":
 		notifier = NewChatworkNotifier(values["api_token"], values["room_id"])
 	case "slack":
-		notifier = NewSlackNotifier(values["token"], values["user_name"], values["channel"])
+		notifier = NewSlackNotifier(values["api_token"], values["user_name"], values["channel"])
 	default:
 		panic(fmt.Sprintf("Unknown type: %s in %s", notifier_type, configFile))
 	}
