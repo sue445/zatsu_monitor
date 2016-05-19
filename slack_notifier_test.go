@@ -10,7 +10,7 @@ import (
 func NewTestSlackNotifier() *SlackNotifier {
 	godotenv.Load()
 
-	token := os.Getenv("SLACK_TOKEN")
+	apiToken := os.Getenv("SLACK_API_TOKEN")
 	userName := os.Getenv("SLACK_USER_NAME")
 	channel := os.Getenv("SLACK_CHANNEL")
 
@@ -18,11 +18,11 @@ func NewTestSlackNotifier() *SlackNotifier {
 		userName = "zatsu_monitor"
 	}
 
-	if len(token) == 0 || len(channel) == 0 {
+	if len(apiToken) == 0 || len(channel) == 0 {
 		return nil
 	}
 
-	return NewSlackNotifier(token, userName, "#"+channel)
+	return NewSlackNotifier(apiToken, userName, "#"+channel)
 }
 
 func TestSlackNotifier_PostStatus_Successful(t *testing.T) {

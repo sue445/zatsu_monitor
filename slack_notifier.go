@@ -5,17 +5,17 @@ import (
 	"github.com/nlopes/slack"
 )
 
-var slackExpectedKeys = []string{"type", "check_url", "token", "channel"}
+var slackExpectedKeys = []string{"type", "check_url", "api_token", "channel"}
 
 type SlackNotifier struct {
-	token    string
+	apiToken string
 	userName string
 	channel  string
 }
 
-func NewSlackNotifier(token string, userName string, channel string) *SlackNotifier {
+func NewSlackNotifier(apiToken string, userName string, channel string) *SlackNotifier {
 	s := new(SlackNotifier)
-	s.token = token
+	s.apiToken = apiToken
 	s.channel = channel
 
 	if len(userName) == 0 {
@@ -54,7 +54,7 @@ statusCode: %d -> %d`
 	params.Username = userName
 	params.IconEmoji = iconEmoji
 
-	api := slack.New(s.token)
+	api := slack.New(s.apiToken)
 
 	_, _, err := api.PostMessage(s.channel, message, params)
 
