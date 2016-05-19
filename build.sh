@@ -14,7 +14,7 @@ function get_version(){
         local _sed="sed"
     fi
 
-    grep VERSION version.go | $_sed -r 's/.+?"([0-9.]+)".+?/\1/g'
+    grep VERSION version.go | $_sed -r 's/.+?"(.+)".+?/\1/g'
 }
 
 function build(){
