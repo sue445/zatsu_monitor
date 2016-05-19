@@ -6,13 +6,12 @@ import (
 	"log"
 )
 
-var configFile, dataDir, configName string
+var configFile, dataDir string
 var isPrintVersion bool
 
 func init() {
 	flag.StringVar(&configFile, "config", "", "Path to config file")
 	flag.StringVar(&dataDir, "data", "", "Path to data dir for cache")
-	flag.StringVar(&configName, "name", "", "Name for url checking (default: all)")
 	flag.BoolVar(&isPrintVersion, "version", false, "Whether showing version")
 
 	flag.Parse()
