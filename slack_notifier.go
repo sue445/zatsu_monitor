@@ -20,7 +20,7 @@ func NewSlackNotifier(token string, userName string, channel string) *SlackNotif
 
 	if len(userName) == 0 {
 		s.userName = "zatsu_monitor"
-	} else{
+	} else {
 		s.userName = userName
 	}
 
