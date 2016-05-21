@@ -19,7 +19,7 @@ func TestUtil_GetStatusCode_HttpError(t *testing.T) {
 	assert.Equal(t, 404, actual)
 }
 
-func TestUtil_GetStatusCodeg_NoSuchHost(t *testing.T) {
+func TestUtil_GetStatusCode_NoSuchHost(t *testing.T) {
 	actual, err := GetStatusCode("https://aaaaaaaaaaaaaaa")
 
 	assert.Error(t, err)
