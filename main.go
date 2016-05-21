@@ -66,7 +66,7 @@ func perform(name string, values map[string]string) {
 
 	z := NewZatsuMonitor(dataDir)
 	checkUrl := values["check_url"]
-	currentStatusCode, err := z.CheckUrl(checkUrl)
+	currentStatusCode, err := HttpStatusCode(checkUrl)
 	log.Printf("%s [status %d]\n", checkUrl, currentStatusCode)
 
 	if err != nil {

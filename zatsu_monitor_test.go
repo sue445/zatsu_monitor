@@ -12,17 +12,15 @@ func NewTestZatsuMonitor() *ZatsuMonitor {
 	return NewZatsuMonitor(TEST_DB_FILE)
 }
 
-func TestZatsuMonitor_CheckUrl_Ok(t *testing.T) {
-	z := NewTestZatsuMonitor()
-	actual, err := z.CheckUrl("https://www.google.co.jp/")
+func TestZatsuMonitor_HttpStatusCode_Ok(t *testing.T) {
+	actual, err := HttpStatusCode("https://www.google.co.jp/")
 
 	assert.NoError(t, err)
 	assert.Equal(t, 200, actual)
 }
 
-func TestZatsuMonitor_CheckUrl_Ng(t *testing.T) {
-	z := NewTestZatsuMonitor()
-	actual, err := z.CheckUrl("https://www.google.co.jp/aaa")
+func TestZatsuMonitor_HttpStatusCodeg_Ng(t *testing.T) {
+	actual, err := HttpStatusCode("https://www.google.co.jp/aaa")
 
 	assert.NoError(t, err)
 	assert.Equal(t, 404, actual)

@@ -17,7 +17,7 @@ func NewZatsuMonitor(databaseFile string) *ZatsuMonitor {
 	return z
 }
 
-func (z ZatsuMonitor) CheckUrl(url string) (int, error) {
+func HttpStatusCode(url string) (int, error) {
 	resp, err := http.Get(url)
 
 	if err != nil {
