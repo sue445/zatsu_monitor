@@ -12,7 +12,7 @@ func TestUtil_HttpStatusCode_Ok(t *testing.T) {
 	assert.Equal(t, 200, actual)
 }
 
-func TestUtil_HttpStatusCodeg_HttpError(t *testing.T) {
+func TestUtil_HttpStatusCode_HttpError(t *testing.T) {
 	actual, err := HttpStatusCode("https://www.google.co.jp/aaa")
 
 	assert.NoError(t, err)
