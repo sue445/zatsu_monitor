@@ -36,7 +36,14 @@ func (c ChatworkNotifier) PostStatus(checkUrl string, beforeStatusCode int, curr
 		statusText = "down (devil)"
 	}
 
-	message := fmt.Sprintf("[info][title]%s is %s[/title]statusCode: %d -> %d[/info]", checkUrl, statusText, beforeStatusCode, currentStatusCode)
+	title := fmt.Sprintf("%s is %s", checkUrl, statusText)
+	body := fmt.Sprintf("statusCode: %d -> %d", beforeStatusCode, currentStatusCode)
+
+	if httpError != nil {
+		body += fmt.Sprintf("\nhttpError: %v", httpError)
+	}
+
+	message := fmt.Sprintf("[info][title]%s[/title]%s[/info]", title, body)
 
 	_, err := chatwork.PostRoomMessage(c.roomId, message)
 

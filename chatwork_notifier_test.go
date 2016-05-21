@@ -5,6 +5,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
+	"errors"
 )
 
 func NewTestChatworkNotifier() *ChatworkNotifier {
@@ -36,5 +37,15 @@ func TestChatworkNotifier_PostStatus_False(t *testing.T) {
 	}
 
 	err := notifier.PostStatus("https://www.google.co.jp/aaa", 0, 404, nil)
+	assert.NoError(t, err)
+}
+
+func TestChatworkNotifier_PostStatus_HasError(t *testing.T) {
+	notifier := NewTestChatworkNotifier()
+	if notifier == nil {
+		return
+	}
+
+	err := notifier.PostStatus("https://aaaaaaaaa/", 0, 0, errors.New("Test"))
 	assert.NoError(t, err)
 }
