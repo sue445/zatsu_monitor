@@ -50,6 +50,10 @@ func (s SlackNotifier) PostStatus(checkUrl string, beforeStatusCode int, current
 statusCode: %d -> %d`
 	message := fmt.Sprintf(format, checkUrl, statusText, beforeStatusCode, currentStatusCode)
 
+	if httpError != nil {
+		message += fmt.Sprintf("\nhttpError: %v", httpError)
+	}
+
 	params := slack.NewPostMessageParameters()
 	params.Username = userName
 	params.IconEmoji = iconEmoji
