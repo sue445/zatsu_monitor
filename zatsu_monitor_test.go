@@ -38,5 +38,5 @@ func TestZatsuMonitor_GetDbStatus_NotExists(t *testing.T) {
 	actual, err := z.GetDbStatus("key")
 
 	assert.NoError(t, err)
-	assert.Equal(t, 0, actual)
+	assert.Equal(t, NOT_FOUND_KEY, actual)
 }
