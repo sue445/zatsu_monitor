@@ -31,7 +31,7 @@ func (s SlackNotifier) ExpectedKeys() []string {
 	return slackExpectedKeys
 }
 
-func (s SlackNotifier) PostStatus(checkUrl string, beforeStatusCode int, currentStatusCode int) error {
+func (s SlackNotifier) PostStatus(checkUrl string, beforeStatusCode int, currentStatusCode int, httpError error) error {
 	var statusText, iconEmoji, userName string
 
 	successful := IsSuccessfulStatus(currentStatusCode)

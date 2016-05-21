@@ -23,7 +23,7 @@ func (c ChatworkNotifier) ExpectedKeys() []string {
 	return chatworkExpectedKeys
 }
 
-func (c ChatworkNotifier) PostStatus(checkUrl string, beforeStatusCode int, currentStatusCode int) error {
+func (c ChatworkNotifier) PostStatus(checkUrl string, beforeStatusCode int, currentStatusCode int, httpError error) error {
 	chatwork := chatwork.NewClient(c.apiToken)
 
 	var statusText string

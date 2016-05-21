@@ -68,10 +68,6 @@ func perform(name string, values map[string]string) {
 	currentStatusCode, httpError := GetStatusCode(checkUrl)
 	log.Printf("%s [status %d] %v\n", checkUrl, currentStatusCode, httpError)
 
-	if httpError != nil {
-		panic(httpError)
-	}
-
 	z := NewZatsuMonitor(dataDir)
 	beforeStatusCode, err := z.GetDbStatus(name)
 
@@ -87,6 +83,6 @@ func perform(name string, values map[string]string) {
 
 	if beforeStatusCode > 0 && currentStatusCode > 0 && beforeStatusCode != currentStatusCode {
 		// When status code changes from the previous, notify
-		notifier.PostStatus(checkUrl, beforeStatusCode, currentStatusCode)
+		notifier.PostStatus(checkUrl, beforeStatusCode, currentStatusCode, httpError)
 	}
 }

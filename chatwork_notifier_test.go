@@ -25,7 +25,7 @@ func TestChatworkNotifier_PostStatus_True(t *testing.T) {
 		return
 	}
 
-	err := notifier.PostStatus("https://www.google.co.jp/", 0, 200)
+	err := notifier.PostStatus("https://www.google.co.jp/", 0, 200, nil)
 	assert.NoError(t, err)
 }
 
@@ -35,6 +35,6 @@ func TestChatworkNotifier_PostStatus_False(t *testing.T) {
 		return
 	}
 
-	err := notifier.PostStatus("https://www.google.co.jp/aaa", 0, 404)
+	err := notifier.PostStatus("https://www.google.co.jp/aaa", 0, 404, nil)
 	assert.NoError(t, err)
 }
