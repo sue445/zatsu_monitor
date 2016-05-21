@@ -83,6 +83,12 @@ func perform(name string, values map[string]string) {
 
 	if beforeStatusCode > 0 && currentStatusCode > 0 && beforeStatusCode != currentStatusCode {
 		// When status code changes from the previous, notify
-		notifier.PostStatus(checkUrl, beforeStatusCode, currentStatusCode, httpError)
+		param := PostStatusParam{
+			CheckUrl:          checkUrl,
+			BeforeStatusCode:  beforeStatusCode,
+			CurrentStatusCode: currentStatusCode,
+			HttpError:         httpError,
+		}
+		notifier.PostStatus(param)
 	}
 }

@@ -1,11 +1,11 @@
 package main
 
 import (
+	"errors"
 	"github.com/joho/godotenv"
 	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
-	"errors"
 )
 
 func NewTestChatworkNotifier() *ChatworkNotifier {
@@ -26,7 +26,14 @@ func TestChatworkNotifier_PostStatus_True(t *testing.T) {
 		return
 	}
 
-	err := notifier.PostStatus("https://www.google.co.jp/", 0, 200, nil)
+	param := PostStatusParam{
+		CheckUrl:          "https://www.google.co.jp/",
+		BeforeStatusCode:  500,
+		CurrentStatusCode: 200,
+		HttpError:         nil,
+	}
+
+	err := notifier.PostStatus(param)
 	assert.NoError(t, err)
 }
 
@@ -36,7 +43,13 @@ func TestChatworkNotifier_PostStatus_False(t *testing.T) {
 		return
 	}
 
-	err := notifier.PostStatus("https://www.google.co.jp/aaa", 0, 404, nil)
+	param := PostStatusParam{
+		CheckUrl:          "https://www.google.co.jp/aaa",
+		BeforeStatusCode:  0,
+		CurrentStatusCode: 404,
+		HttpError:         nil,
+	}
+	err := notifier.PostStatus(param)
 	assert.NoError(t, err)
 }
 
@@ -46,6 +59,12 @@ func TestChatworkNotifier_PostStatus_HasError(t *testing.T) {
 		return
 	}
 
-	err := notifier.PostStatus("https://aaaaaaaaa/", 0, 0, errors.New("Test"))
+	param := PostStatusParam{
+		CheckUrl:          "https://aaaaaaaaa/",
+		BeforeStatusCode:  0,
+		CurrentStatusCode: 0,
+		HttpError:         errors.New("Test"),
+	}
+	err := notifier.PostStatus(param)
 	assert.NoError(t, err)
 }

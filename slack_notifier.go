@@ -31,10 +31,10 @@ func (s SlackNotifier) ExpectedKeys() []string {
 	return slackExpectedKeys
 }
 
-func (s SlackNotifier) PostStatus(checkUrl string, beforeStatusCode int, currentStatusCode int, httpError error) error {
+func (s SlackNotifier) PostStatus(param PostStatusParam) error {
 	var statusText, iconEmoji, userName string
 
-	successful := IsSuccessfulStatus(currentStatusCode)
+	successful := IsSuccessfulStatus(param.CurrentStatusCode)
 
 	if successful {
 		statusText = "ok"
@@ -48,10 +48,10 @@ func (s SlackNotifier) PostStatus(checkUrl string, beforeStatusCode int, current
 
 	format := `%s is %s
 statusCode: %d -> %d`
-	message := fmt.Sprintf(format, checkUrl, statusText, beforeStatusCode, currentStatusCode)
+	message := fmt.Sprintf(format, param.CheckUrl, statusText, param.BeforeStatusCode, param.CurrentStatusCode)
 
-	if httpError != nil {
-		message += fmt.Sprintf("\nhttpError: %v", httpError)
+	if param.HttpError != nil {
+		message += fmt.Sprintf("\nhttpError: %v", param.HttpError)
 	}
 
 	params := slack.NewPostMessageParameters()

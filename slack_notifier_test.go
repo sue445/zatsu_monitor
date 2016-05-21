@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/joho/godotenv"
 	"github.com/stretchr/testify/assert"
+	"github.com/syndtr/goleveldb/leveldb/errors"
 	"os"
 	"testing"
-	"github.com/syndtr/goleveldb/leveldb/errors"
 )
 
 func NewTestSlackNotifier() *SlackNotifier {
@@ -33,7 +33,13 @@ func TestSlackNotifier_PostStatus_Successful(t *testing.T) {
 		return
 	}
 
-	err := notifier.PostStatus("https://www.google.co.jp/", 500, 200, nil)
+	param := PostStatusParam{
+		CheckUrl:          "https://www.google.co.jp/",
+		BeforeStatusCode:  500,
+		CurrentStatusCode: 200,
+		HttpError:         nil,
+	}
+	err := notifier.PostStatus(param)
 	assert.NoError(t, err)
 }
 
@@ -44,7 +50,13 @@ func TestSlackNotifier_PostStatus_Failure(t *testing.T) {
 		return
 	}
 
-	err := notifier.PostStatus("https://www.google.co.jp/aaa", 0, 404, nil)
+	param := PostStatusParam{
+		CheckUrl:          "https://www.google.co.jp/aaa",
+		BeforeStatusCode:  0,
+		CurrentStatusCode: 404,
+		HttpError:         nil,
+	}
+	err := notifier.PostStatus(param)
 	assert.NoError(t, err)
 }
 
@@ -55,6 +67,12 @@ func TestSlackNotifier_PostStatus_HasError(t *testing.T) {
 		return
 	}
 
-	err := notifier.PostStatus("https://aaaaaaaaa/", 0, 0, errors.New("Test"))
+	param := PostStatusParam{
+		CheckUrl:          "https://aaaaaaaaa/",
+		BeforeStatusCode:  0,
+		CurrentStatusCode: 0,
+		HttpError:         errors.New("Test"),
+	}
+	err := notifier.PostStatus(param)
 	assert.NoError(t, err)
 }

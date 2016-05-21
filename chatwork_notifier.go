@@ -23,12 +23,12 @@ func (c ChatworkNotifier) ExpectedKeys() []string {
 	return chatworkExpectedKeys
 }
 
-func (c ChatworkNotifier) PostStatus(checkUrl string, beforeStatusCode int, currentStatusCode int, httpError error) error {
+func (c ChatworkNotifier) PostStatus(param PostStatusParam) error {
 	chatwork := chatwork.NewClient(c.apiToken)
 
 	var statusText string
 
-	successful := IsSuccessfulStatus(currentStatusCode)
+	successful := IsSuccessfulStatus(param.CurrentStatusCode)
 
 	if successful {
 		statusText = "ok (F)"
@@ -36,11 +36,11 @@ func (c ChatworkNotifier) PostStatus(checkUrl string, beforeStatusCode int, curr
 		statusText = "down (devil)"
 	}
 
-	title := fmt.Sprintf("%s is %s", checkUrl, statusText)
-	body := fmt.Sprintf("statusCode: %d -> %d", beforeStatusCode, currentStatusCode)
+	title := fmt.Sprintf("%s is %s", param.CheckUrl, statusText)
+	body := fmt.Sprintf("statusCode: %d -> %d", param.BeforeStatusCode, param.CurrentStatusCode)
 
-	if httpError != nil {
-		body += fmt.Sprintf("\nhttpError: %v", httpError)
+	if param.HttpError != nil {
+		body += fmt.Sprintf("\nhttpError: %v", param.HttpError)
 	}
 
 	message := fmt.Sprintf("[info][title]%s[/title]%s[/info]", title, body)
