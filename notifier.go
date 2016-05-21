@@ -1,6 +1,12 @@
 package main
 
+type PostStatusParam struct {
+	CheckUrl                            string
+	BeforeStatusCode, CurrentStatusCode int
+	HttpError                           error
+}
+
 type Notifier interface {
-	PostStatus(string, int, int) error
+	PostStatus(PostStatusParam) error
 	ExpectedKeys() []string
 }
