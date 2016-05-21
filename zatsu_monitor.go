@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/binary"
 	"github.com/syndtr/goleveldb/leveldb"
-	"net/http"
 )
 
 type ZatsuMonitor struct {
@@ -15,16 +14,6 @@ func NewZatsuMonitor(databaseFile string) *ZatsuMonitor {
 	z := new(ZatsuMonitor)
 	z.databaseFile = databaseFile
 	return z
-}
-
-func HttpStatusCode(url string) (int, error) {
-	resp, err := http.Get(url)
-
-	if err != nil {
-		return 0, err
-	}
-
-	return resp.StatusCode, nil
 }
 
 func (z ZatsuMonitor) GetDbStatus(key string) (int, error) {
@@ -59,11 +48,4 @@ func (z ZatsuMonitor) SaveDbStatus(key string, statusCode int) error {
 	db.Put([]byte(key), buf, nil)
 
 	return nil
-}
-
-func IsSuccessfulStatus(statusCode int) bool {
-	n := statusCode / 100
-
-	// Successful: 2xx, 3xx
-	return n == 2 || n == 3
 }
