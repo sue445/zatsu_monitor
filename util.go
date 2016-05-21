@@ -2,7 +2,7 @@ package main
 
 import "net/http"
 
-func HttpStatusCode(url string) (int, error) {
+func GetStatusCode(url string) (int, error) {
 	resp, err := http.Get(url)
 
 	if err != nil {
