@@ -81,7 +81,7 @@ func perform(name string, values map[string]string) {
 		panic(err)
 	}
 
-	if beforeStatusCode > 0 && currentStatusCode > 0 && beforeStatusCode != currentStatusCode {
+	if beforeStatusCode != NOT_FOUND_KEY && beforeStatusCode != currentStatusCode {
 		// When status code changes from the previous, notify
 		param := PostStatusParam{
 			CheckUrl:          checkUrl,

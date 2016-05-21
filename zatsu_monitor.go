@@ -10,6 +10,10 @@ type ZatsuMonitor struct {
 	databaseFile string
 }
 
+const (
+	NOT_FOUND_KEY = -1
+)
+
 func NewZatsuMonitor(databaseFile string) *ZatsuMonitor {
 	z := new(ZatsuMonitor)
 	z.databaseFile = databaseFile
@@ -24,7 +28,7 @@ func (z ZatsuMonitor) GetDbStatus(key string) (int, error) {
 	defer db.Close()
 
 	if ret, _ := db.Has([]byte(key), nil); !ret {
-		return 0, nil
+		return NOT_FOUND_KEY, nil
 	}
 
 	data, err := db.Get([]byte(key), nil)
