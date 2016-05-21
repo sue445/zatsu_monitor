@@ -1,6 +1,9 @@
 #!/bin/bash -e
 
 # build and compress file
+#
+# If you use Mac, install GNU sed
+#   $ brew install gnu-sed
 
 readonly DIST_DIR="dist"
 readonly BIN_NAME="zatsu_monitor"
