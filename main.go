@@ -65,7 +65,7 @@ func perform(name string, values map[string]string) {
 	}
 
 	checkUrl := values["check_url"]
-	currentStatusCode, err := HttpStatusCode(checkUrl)
+	currentStatusCode, err := GetStatusCode(checkUrl)
 	log.Printf("%s [status %d]\n", checkUrl, currentStatusCode)
 
 	if err != nil {
