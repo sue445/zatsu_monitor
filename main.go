@@ -68,14 +68,14 @@ func perform(name string, values map[string]string) {
 	currentStatusCode, httpError := GetStatusCode(checkUrl)
 	log.Printf("%s [status %d] %v\n", checkUrl, currentStatusCode, httpError)
 
-	z := NewZatsuMonitor(dataDir)
-	beforeStatusCode, err := z.GetDbStatus(name)
+	store := NewStatusStore(dataDir)
+	beforeStatusCode, err := store.GetDbStatus(name)
 
 	if err != nil {
 		panic(err)
 	}
 
-	err = z.SaveDbStatus(name, currentStatusCode)
+	err = store.SaveDbStatus(name, currentStatusCode)
 
 	if err != nil {
 		panic(err)
