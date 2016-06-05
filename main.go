@@ -89,6 +89,6 @@ func perform(name string, values map[string]string) {
 			CurrentStatusCode: currentStatusCode,
 			HttpError:         httpError,
 		}
-		notifier.PostStatus(param)
+		notifier.PostStatus(&param)
 	}
 }

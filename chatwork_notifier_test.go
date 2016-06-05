@@ -33,7 +33,7 @@ func TestChatworkNotifier_PostStatus_True(t *testing.T) {
 		HttpError:         nil,
 	}
 
-	err := notifier.PostStatus(param)
+	err := notifier.PostStatus(&param)
 	assert.NoError(t, err)
 }
 
@@ -49,7 +49,7 @@ func TestChatworkNotifier_PostStatus_False(t *testing.T) {
 		CurrentStatusCode: 404,
 		HttpError:         nil,
 	}
-	err := notifier.PostStatus(param)
+	err := notifier.PostStatus(&param)
 	assert.NoError(t, err)
 }
 
@@ -65,6 +65,6 @@ func TestChatworkNotifier_PostStatus_HasError(t *testing.T) {
 		CurrentStatusCode: 0,
 		HttpError:         errors.New("Test"),
 	}
-	err := notifier.PostStatus(param)
+	err := notifier.PostStatus(&param)
 	assert.NoError(t, err)
 }

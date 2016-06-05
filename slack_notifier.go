@@ -27,11 +27,11 @@ func NewSlackNotifier(apiToken string, userName string, channel string) *SlackNo
 	return s
 }
 
-func (s SlackNotifier) ExpectedKeys() []string {
+func (s *SlackNotifier) ExpectedKeys() []string {
 	return slackExpectedKeys
 }
 
-func (s SlackNotifier) PostStatus(param PostStatusParam) error {
+func (s *SlackNotifier) PostStatus(param *PostStatusParam) error {
 	var statusText, iconEmoji, userName string
 
 	successful := IsSuccessfulStatus(param.CurrentStatusCode)

@@ -7,6 +7,6 @@ type PostStatusParam struct {
 }
 
 type Notifier interface {
-	PostStatus(PostStatusParam) error
+	PostStatus(*PostStatusParam) error
 	ExpectedKeys() []string
 }

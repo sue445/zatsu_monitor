@@ -20,7 +20,7 @@ func NewZatsuMonitor(databaseFile string) *ZatsuMonitor {
 	return z
 }
 
-func (z ZatsuMonitor) GetDbStatus(key string) (int, error) {
+func (z *ZatsuMonitor) GetDbStatus(key string) (int, error) {
 	db, err := leveldb.OpenFile(z.databaseFile, nil)
 	if err != nil {
 		return 0, err
@@ -39,7 +39,7 @@ func (z ZatsuMonitor) GetDbStatus(key string) (int, error) {
 	return int(statusCode), nil
 }
 
-func (z ZatsuMonitor) SaveDbStatus(key string, statusCode int) error {
+func (z *ZatsuMonitor) SaveDbStatus(key string, statusCode int) error {
 	db, err := leveldb.OpenFile(z.databaseFile, nil)
 	if err != nil {
 		return err
