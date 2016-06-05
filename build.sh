@@ -7,6 +7,7 @@
 
 readonly DIST_DIR="dist"
 readonly BIN_NAME="zatsu_monitor"
+readonly MODE=$1
 
 # get version from version.go
 function get_version(){
@@ -40,3 +41,11 @@ version=`get_version`
 build "darwin" "amd64"
 build "linux" "amd64"
 build "linux" "arm"
+
+if [  "${MODE}" = "release" ]; then
+    git tag -a ${version} -m "Release v${version}"
+    echo "Add tag: ${version}"
+
+    git push origin master
+    git push --tags
+fi
