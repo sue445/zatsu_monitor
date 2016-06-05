@@ -19,11 +19,11 @@ func NewChatworkNotifier(apiToken string, roomId string) *ChatworkNotifier {
 	return c
 }
 
-func (c ChatworkNotifier) ExpectedKeys() []string {
+func (c *ChatworkNotifier) ExpectedKeys() []string {
 	return chatworkExpectedKeys
 }
 
-func (c ChatworkNotifier) PostStatus(param PostStatusParam) error {
+func (c *ChatworkNotifier) PostStatus(param *PostStatusParam) error {
 	chatwork := chatwork.NewClient(c.apiToken)
 
 	var statusText string

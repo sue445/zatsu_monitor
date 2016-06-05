@@ -6,7 +6,7 @@ import (
 	"github.com/syndtr/goleveldb/leveldb"
 )
 
-type ZatsuMonitor struct {
+type StatusStore struct {
 	databaseFile string
 }
 
@@ -14,14 +14,14 @@ const (
 	NOT_FOUND_KEY = -1
 )
 
-func NewZatsuMonitor(databaseFile string) *ZatsuMonitor {
-	z := new(ZatsuMonitor)
-	z.databaseFile = databaseFile
-	return z
+func NewStatusStore(databaseFile string) *StatusStore {
+	s := new(StatusStore)
+	s.databaseFile = databaseFile
+	return s
 }
 
-func (z ZatsuMonitor) GetDbStatus(key string) (int, error) {
-	db, err := leveldb.OpenFile(z.databaseFile, nil)
+func (s *StatusStore) GetDbStatus(key string) (int, error) {
+	db, err := leveldb.OpenFile(s.databaseFile, nil)
 	if err != nil {
 		return 0, err
 	}
@@ -39,8 +39,8 @@ func (z ZatsuMonitor) GetDbStatus(key string) (int, error) {
 	return int(statusCode), nil
 }
 
-func (z ZatsuMonitor) SaveDbStatus(key string, statusCode int) error {
-	db, err := leveldb.OpenFile(z.databaseFile, nil)
+func (s *StatusStore) SaveDbStatus(key string, statusCode int) error {
+	db, err := leveldb.OpenFile(s.databaseFile, nil)
 	if err != nil {
 		return err
 	}

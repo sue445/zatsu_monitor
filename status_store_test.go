@@ -8,8 +8,8 @@ import (
 
 const TEST_DB_FILE = "tmp/zatsu"
 
-func NewTestZatsuMonitor() *ZatsuMonitor {
-	return NewZatsuMonitor(TEST_DB_FILE)
+func NewTestStatusStore() *StatusStore {
+	return NewStatusStore(TEST_DB_FILE)
 }
 
 func DeleteData(key string) {
@@ -22,20 +22,20 @@ func DeleteData(key string) {
 	db.Delete([]byte(key), nil)
 }
 
-func TestZatsuMonitor_GetDbStatus_Exists(t *testing.T) {
-	z := NewTestZatsuMonitor()
-	z.SaveDbStatus("key", 200)
+func TestStatusStore_GetDbStatus_Exists(t *testing.T) {
+	store := NewTestStatusStore()
+	store.SaveDbStatus("key", 200)
 	defer DeleteData("key")
 
-	actual, err := z.GetDbStatus("key")
+	actual, err := store.GetDbStatus("key")
 
 	assert.NoError(t, err)
 	assert.Equal(t, 200, actual)
 }
 
-func TestZatsuMonitor_GetDbStatus_NotExists(t *testing.T) {
-	z := NewTestZatsuMonitor()
-	actual, err := z.GetDbStatus("key")
+func TestStatusStore_GetDbStatus_NotExists(t *testing.T) {
+	store := NewTestStatusStore()
+	actual, err := store.GetDbStatus("key")
 
 	assert.NoError(t, err)
 	assert.Equal(t, NOT_FOUND_KEY, actual)
