@@ -5,6 +5,9 @@ Notify message to chatroom only if http status is changed from just before (e.g.
 
 ![slack](img/slack.png)
 
+[![Build Status](https://travis-ci.org/sue445/zatsu_monitor.svg?branch=master)](https://travis-ci.org/sue445/zatsu_monitor)
+[![Coverage Status](https://coveralls.io/repos/github/sue445/zatsu_monitor/badge.svg?branch=master)](https://coveralls.io/github/sue445/zatsu_monitor?branch=master)
+
 ## Getting
 Download latest binary from here
 
