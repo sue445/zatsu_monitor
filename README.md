@@ -7,6 +7,7 @@ Notify message to chatroom only if http status is changed from just before (e.g.
 
 [![Build Status](https://travis-ci.org/sue445/zatsu_monitor.svg?branch=master)](https://travis-ci.org/sue445/zatsu_monitor)
 [![Coverage Status](https://coveralls.io/repos/github/sue445/zatsu_monitor/badge.svg?branch=master)](https://coveralls.io/github/sue445/zatsu_monitor?branch=master)
+[![Code Climate](https://codeclimate.com/github/sue445/zatsu_monitor/badges/gpa.svg)](https://codeclimate.com/github/sue445/zatsu_monitor)
 
 ## Getting
 Download latest binary from here
