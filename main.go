@@ -68,7 +68,7 @@ func perform(name string, values map[string]string) {
 
 	start := time.Now()
 	currentStatusCode, httpError := GetStatusCode(checkUrl)
-	end := time.Now();
+	end := time.Now()
 	responseTime := (end.Sub(start)).Seconds()
 
 	fmt.Printf("time:%v\tcheck_url:%s\tstatus:%d\tresponse_time:%f\terror:%v\n", time.Now(), checkUrl, currentStatusCode, responseTime, httpError)
@@ -93,6 +93,7 @@ func perform(name string, values map[string]string) {
 			BeforeStatusCode:  beforeStatusCode,
 			CurrentStatusCode: currentStatusCode,
 			HttpError:         httpError,
+			ResponseTime:      responseTime,
 		}
 		notifier.PostStatus(&param)
 	}

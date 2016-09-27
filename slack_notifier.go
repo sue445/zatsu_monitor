@@ -47,8 +47,9 @@ func (s *SlackNotifier) PostStatus(param *PostStatusParam) error {
 	}
 
 	format := `%s is %s
-statusCode: %d -> %d`
-	message := fmt.Sprintf(format, param.CheckUrl, statusText, param.BeforeStatusCode, param.CurrentStatusCode)
+statusCode: %d -> %d
+responseTime: %f sec`
+	message := fmt.Sprintf(format, param.CheckUrl, statusText, param.BeforeStatusCode, param.CurrentStatusCode, param.ResponseTime)
 
 	if param.HttpError != nil {
 		message += fmt.Sprintf("\nhttpError: %v", param.HttpError)
