@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
+	"time"
 )
 
 var configFile, dataDir string
@@ -66,7 +66,7 @@ func perform(name string, values map[string]string) {
 
 	checkUrl := values["check_url"]
 	currentStatusCode, httpError := GetStatusCode(checkUrl)
-	log.Printf("%s [status %d] %v\n", checkUrl, currentStatusCode, httpError)
+	fmt.Printf("time:%v\tcheck_url:%s\tstatus:%d\terror:%v\n", time.Now(), checkUrl, currentStatusCode, httpError)
 
 	store := NewStatusStore(dataDir)
 	beforeStatusCode, err := store.GetDbStatus(name)
