@@ -65,8 +65,13 @@ func perform(name string, values map[string]string) {
 	}
 
 	checkUrl := values["check_url"]
+
+	start := time.Now()
 	currentStatusCode, httpError := GetStatusCode(checkUrl)
-	fmt.Printf("time:%v\tcheck_url:%s\tstatus:%d\terror:%v\n", time.Now(), checkUrl, currentStatusCode, httpError)
+	end := time.Now()
+	responseTime := (end.Sub(start)).Seconds()
+
+	fmt.Printf("time:%v\tcheck_url:%s\tstatus:%d\tresponse_time:%f\terror:%v\n", time.Now(), checkUrl, currentStatusCode, responseTime, httpError)
 
 	store := NewStatusStore(dataDir)
 	beforeStatusCode, err := store.GetDbStatus(name)
@@ -88,6 +93,7 @@ func perform(name string, values map[string]string) {
 			BeforeStatusCode:  beforeStatusCode,
 			CurrentStatusCode: currentStatusCode,
 			HttpError:         httpError,
+			ResponseTime:      responseTime,
 		}
 		notifier.PostStatus(&param)
 	}
