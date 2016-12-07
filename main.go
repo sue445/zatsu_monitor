@@ -86,7 +86,12 @@ func perform(name string, values map[string]string) {
 		panic(err)
 	}
 
-	if beforeStatusCode != NOT_FOUND_KEY && beforeStatusCode != currentStatusCode {
+	onlyCheckOnTheOrderOf100 := false
+	if values["check_only_top_of_status_code"] == "true" {
+		onlyCheckOnTheOrderOf100 = true
+	}
+
+	if isNotify(beforeStatusCode, currentStatusCode, onlyCheckOnTheOrderOf100) {
 		// When status code changes from the previous, notify
 		param := PostStatusParam{
 			CheckUrl:          checkUrl,
@@ -97,4 +102,23 @@ func perform(name string, values map[string]string) {
 		}
 		notifier.PostStatus(&param)
 	}
+}
+
+func isNotify(beforeStatusCode int, currentStatusCode int, checkOnlyTopOfStatusCode bool) bool {
+	if beforeStatusCode == NOT_FOUND_KEY {
+		return false
+	}
+
+	if checkOnlyTopOfStatusCode {
+		if beforeStatusCode/100 == currentStatusCode/100 {
+			return false
+		}
+
+	} else {
+		if beforeStatusCode == currentStatusCode {
+			return false
+		}
+	}
+
+	return true
 }

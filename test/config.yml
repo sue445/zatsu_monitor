@@ -9,3 +9,7 @@ name2:
   type: chatwork
   api_token: "AAAAAAAA"
   room_id: 111111
+name3:
+  check_only_top_of_status_code: true
+name4:
+  check_only_top_of_status_code: false

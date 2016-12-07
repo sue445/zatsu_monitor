@@ -44,11 +44,13 @@ google:
   api_token: "AAAAAAAA"
   channel: "#general"
   user_name: "zatsu_monitor"
+  # check_only_top_of_status_code: true
 github:
   type: chatwork
   check_url: "https://github.com/"
   api_token: "AAAAAAAA"
   room_id: "111111"
+  # check_only_top_of_status_code: true
 ```
 
 ### Detail
@@ -66,6 +68,10 @@ github:
 * `check_url` : URL for checking (required)
 * `api_token` : ChatWork API Token (required)
 * `room_id` : RoomID for post (required)
+
+#### Common
+* `check_only_top_of_status_code` : Whether check only top of the status code (optional. default is `false`)
+  * e.g) When `check_only_top_of_status_code` is `true`, before status code is 501 and current status code is 502, don't notify
 
 ## ProTip
 ### Inherit values
