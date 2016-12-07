@@ -10,6 +10,6 @@ name2:
   api_token: "AAAAAAAA"
   room_id: 111111
 name3:
-  only_check_on_the_order_of_100: true
+  check_only_top_of_status_code: true
 name4:
-  only_check_on_the_order_of_100: false
+  check_only_top_of_status_code: false

@@ -87,7 +87,7 @@ func perform(name string, values map[string]string) {
 	}
 
 	onlyCheckOnTheOrderOf100 := false
-	if values["only_check_on_the_order_of_100"] == "true" {
+	if values["check_only_top_of_status_code"] == "true" {
 		onlyCheckOnTheOrderOf100 = true
 	}
 
@@ -104,12 +104,12 @@ func perform(name string, values map[string]string) {
 	}
 }
 
-func isNotify(beforeStatusCode int, currentStatusCode int, onlyCheckOnTheOrderOf100 bool) bool {
+func isNotify(beforeStatusCode int, currentStatusCode int, checkOnlyTopOfStatusCode bool) bool {
 	if beforeStatusCode == NOT_FOUND_KEY {
 		return false
 	}
 
-	if onlyCheckOnTheOrderOf100 {
+	if checkOnlyTopOfStatusCode {
 		if beforeStatusCode/100 == currentStatusCode/100 {
 			return false
 		}

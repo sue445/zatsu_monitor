@@ -6,7 +6,7 @@ import (
 )
 
 type isNotifyFixture struct {
-	onlyCheckOnTheOrderOf100 bool
+	checkOnlyTopOfStatusCode bool
 	beforeStatusCode         int
 	currentStatusCode        int
 	expected                 bool
@@ -27,7 +27,7 @@ var isNotifyFixtures = []isNotifyFixture{
 
 func TestIsNotify(t *testing.T) {
 	for _, fixture := range isNotifyFixtures {
-		actual := isNotify(fixture.beforeStatusCode, fixture.currentStatusCode, fixture.onlyCheckOnTheOrderOf100)
+		actual := isNotify(fixture.beforeStatusCode, fixture.currentStatusCode, fixture.checkOnlyTopOfStatusCode)
 		assert.Equal(t, fixture.expected, actual)
 	}
 }
