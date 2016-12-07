@@ -86,7 +86,7 @@ func perform(name string, values map[string]string) {
 		panic(err)
 	}
 
-	if beforeStatusCode != NOT_FOUND_KEY && beforeStatusCode != currentStatusCode {
+	if isNotify(beforeStatusCode, currentStatusCode) {
 		// When status code changes from the previous, notify
 		param := PostStatusParam{
 			CheckUrl:          checkUrl,
@@ -97,4 +97,15 @@ func perform(name string, values map[string]string) {
 		}
 		notifier.PostStatus(&param)
 	}
+}
+
+func isNotify(beforeStatusCode int, currentStatusCode int) bool {
+	if beforeStatusCode == NOT_FOUND_KEY {
+		return false
+	}
+
+	if beforeStatusCode != currentStatusCode {
+		return true
+	}
+	return false
 }
