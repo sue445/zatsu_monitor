@@ -9,3 +9,7 @@ name2:
   type: chatwork
   api_token: "AAAAAAAA"
   room_id: 111111
+name3:
+  only_check_on_the_order_of_100: true
+name4:
+  only_check_on_the_order_of_100: false

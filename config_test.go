@@ -72,9 +72,14 @@ func TestLoadConfigFromFile(t *testing.T) {
 	assert.Equal(t, "xoxp-0000000000-0000000000-0000000000-000000", config["name1"]["api_token"])
 	assert.Equal(t, "zatsu_monitor", config["name1"]["user_name"])
 	assert.Equal(t, "#general", config["name1"]["channel"])
+	assert.Equal(t, "", config["name1"]["only_check_on_the_order_of_100"])
 
 	assert.Equal(t, "http://example.com/2", config["name2"]["check_url"])
 	assert.Equal(t, "chatwork", config["name2"]["type"])
 	assert.Equal(t, "AAAAAAAA", config["name2"]["api_token"])
 	assert.Equal(t, "111111", config["name2"]["room_id"])
+
+	assert.Equal(t, "true", config["name3"]["only_check_on_the_order_of_100"])
+
+	assert.Equal(t, "false", config["name4"]["only_check_on_the_order_of_100"])
 }
