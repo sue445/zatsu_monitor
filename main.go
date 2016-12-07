@@ -86,7 +86,12 @@ func perform(name string, values map[string]string) {
 		panic(err)
 	}
 
-	if isNotify(beforeStatusCode, currentStatusCode) {
+	onlyCheckOnTheOrderOf100 := false
+	if values["only_check_on_the_order_of_100"] == "true" {
+		onlyCheckOnTheOrderOf100 = true
+	}
+
+	if isNotify(beforeStatusCode, currentStatusCode, onlyCheckOnTheOrderOf100) {
 		// When status code changes from the previous, notify
 		param := PostStatusParam{
 			CheckUrl:          checkUrl,
@@ -99,13 +104,21 @@ func perform(name string, values map[string]string) {
 	}
 }
 
-func isNotify(beforeStatusCode int, currentStatusCode int) bool {
+func isNotify(beforeStatusCode int, currentStatusCode int, onlyCheckOnTheOrderOf100 bool) bool {
 	if beforeStatusCode == NOT_FOUND_KEY {
 		return false
 	}
 
-	if beforeStatusCode != currentStatusCode {
-		return true
+	if onlyCheckOnTheOrderOf100 {
+		if beforeStatusCode/100 == currentStatusCode/100 {
+			return false
+		}
+
+	} else {
+		if beforeStatusCode == currentStatusCode {
+			return false
+		}
 	}
-	return false
+
+	return true
 }
