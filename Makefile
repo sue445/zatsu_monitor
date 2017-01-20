@@ -28,7 +28,7 @@ package:
 		for arch in amd64 386; do \
 			GOOS=$$os GOARCH=$$arch go build -a -tags netgo -installsuffix netgo $(LDFLAGS) -o dist/$${os}_$${arch}/$${exefile} ; \
 			cd dist/$${os}_$${arch} ; \
-			zip ../$(NAME)-$(VERSION)_$${os}_$${arch}.zip $${exefile} ; \
+			zip ../$(NAME)_$(VERSION)_$${os}_$${arch}.zip $${exefile} ; \
 			cd ../.. ; \
 		done; \
 	done
