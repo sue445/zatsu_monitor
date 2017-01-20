@@ -40,3 +40,7 @@ install:
 .PHONY: test
 test:
 	go test
+
+.PHONY: tag
+tag:
+	git tag -a $(VERSION) -m "Release v$(VERSION)"
