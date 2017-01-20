@@ -6,6 +6,10 @@ import (
 	"time"
 )
 
+var (
+	Version  string
+	Revision string
+)
 var configFile, dataDir string
 var isPrintVersion bool
 
@@ -40,7 +44,7 @@ func main() {
 }
 
 func printVersion() {
-	fmt.Printf("zatsu_monitor v%s\n", VERSION)
+	fmt.Printf("zatsu_monitor v%s, build %s\n", Version, Revision)
 }
 
 func perform(name string, values map[string]string) {
