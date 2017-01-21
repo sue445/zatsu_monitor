@@ -44,3 +44,4 @@ test:
 .PHONY: tag
 tag:
 	git tag -a $(VERSION) -m "Release v$(VERSION)"
+	git push --tags
