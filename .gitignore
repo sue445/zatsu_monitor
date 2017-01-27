@@ -27,3 +27,4 @@ tmp/
 .env
 zatsu_monitor
 dist/
+vendor/
