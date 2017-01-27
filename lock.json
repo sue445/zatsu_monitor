@@ -1,0 +1,86 @@
+{
+    "memo": "e3097bf24738c5bfcdd4e58cf9444f158c50db87b34f84ce336b989b1b0e1e7a",
+    "projects": [
+        {
+            "name": "github.com/davecgh/go-spew",
+            "version": "v1.1.0",
+            "revision": "a7a0063072ed89d04285d3d3362aa590ed9f7878",
+            "packages": [
+                "spew"
+            ]
+        },
+        {
+            "name": "github.com/golang/snappy",
+            "branch": "master",
+            "revision": "d7b1e156f50d3c4664f683603af70e3e47fa0aa2",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/griffin-stewie/go-chatwork",
+            "branch": "master",
+            "revision": "0bc2f98bf712a8302870512fdfc8ea3e18d18f32",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/joho/godotenv",
+            "version": "v1",
+            "revision": "a01a834e1654b4c9ca5b3ad05159445cc9c7ad08",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/nlopes/slack",
+            "branch": "master",
+            "revision": "e337a7316d3fe9aa55b7063035d6d32f3dbcaeb9",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/pmezard/go-difflib",
+            "version": "v1.0.0",
+            "revision": "c0b812dadcf4498dede02bb7f0c5c478be997e34",
+            "packages": [
+                "difflib"
+            ]
+        },
+        {
+            "name": "github.com/stretchr/testify",
+            "version": "v1.1.4",
+            "revision": "69483b4bd14f5845b5a1e55bca19e954e827f1d0",
+            "packages": [
+                "assert"
+            ]
+        },
+        {
+            "name": "github.com/syndtr/goleveldb",
+            "branch": "master",
+            "revision": "cfa635847112c5dc4782e128fa7e0d05fdbfb394",
+            "packages": [
+                "leveldb",
+                "leveldb/errors"
+            ]
+        },
+        {
+            "name": "golang.org/x/net",
+            "branch": "master",
+            "revision": "76e74a336561c500a376b406eb649727eeb3477f",
+            "packages": [
+                "websocket"
+            ]
+        },
+        {
+            "name": "gopkg.in/yaml.v2",
+            "branch": "v2",
+            "revision": "a83829b6f1293c91addabc89d0571c246397bbf4",
+            "packages": [
+                "."
+            ]
+        }
+    ]
+}

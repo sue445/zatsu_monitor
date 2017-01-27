@@ -1,0 +1,16 @@
+{
+    "dependencies": {
+        "github.com/griffin-stewie/go-chatwork": {
+            "branch": "master"
+        },
+        "github.com/nlopes/slack": {
+            "branch": "master"
+        },
+        "github.com/syndtr/goleveldb": {
+            "branch": "master"
+        },
+        "gopkg.in/yaml.v2": {
+            "branch": "v2"
+        }
+    }
+}
