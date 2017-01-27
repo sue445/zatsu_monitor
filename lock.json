@@ -4,7 +4,7 @@
         {
             "name": "github.com/davecgh/go-spew",
             "version": "v1.1.0",
-            "revision": "a7a0063072ed89d04285d3d3362aa590ed9f7878",
+            "revision": "346938d642f2ec3594ed81d874461961cd0faa76",
             "packages": [
                 "spew"
             ]
@@ -12,7 +12,7 @@
         {
             "name": "github.com/golang/snappy",
             "branch": "master",
-            "revision": "d7b1e156f50d3c4664f683603af70e3e47fa0aa2",
+            "revision": "7db9049039a047d955fe8c19b83c8ff5abd765c7",
             "packages": [
                 "."
             ]
@@ -20,7 +20,7 @@
         {
             "name": "github.com/griffin-stewie/go-chatwork",
             "branch": "master",
-            "revision": "0bc2f98bf712a8302870512fdfc8ea3e18d18f32",
+            "revision": "a03aef7b22a62a2b0c7f2d5c409db523b748be48",
             "packages": [
                 "."
             ]
@@ -36,7 +36,7 @@
         {
             "name": "github.com/nlopes/slack",
             "branch": "master",
-            "revision": "e337a7316d3fe9aa55b7063035d6d32f3dbcaeb9",
+            "revision": "248e1d53d27901137764ae625890c127bf67e7aa",
             "packages": [
                 "."
             ]
@@ -44,7 +44,7 @@
         {
             "name": "github.com/pmezard/go-difflib",
             "version": "v1.0.0",
-            "revision": "c0b812dadcf4498dede02bb7f0c5c478be997e34",
+            "revision": "792786c7400a136282c1664665ae0a8db921c6c2",
             "packages": [
                 "difflib"
             ]
@@ -60,7 +60,7 @@
         {
             "name": "github.com/syndtr/goleveldb",
             "branch": "master",
-            "revision": "cfa635847112c5dc4782e128fa7e0d05fdbfb394",
+            "revision": "23851d93a2292dcc56e71a18ec9e0624d84a0f65",
             "packages": [
                 "leveldb",
                 "leveldb/errors"
@@ -69,7 +69,7 @@
         {
             "name": "golang.org/x/net",
             "branch": "master",
-            "revision": "76e74a336561c500a376b406eb649727eeb3477f",
+            "revision": "f2499483f923065a842d38eb4c7f1927e6fc6e6d",
             "packages": [
                 "websocket"
             ]
@@ -77,7 +77,7 @@
         {
             "name": "gopkg.in/yaml.v2",
             "branch": "v2",
-            "revision": "a83829b6f1293c91addabc89d0571c246397bbf4",
+            "revision": "4c78c975fe7c825c6d1466c42be594d1d6f3aba6",
             "packages": [
                 "."
             ]
