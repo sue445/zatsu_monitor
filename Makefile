@@ -1,8 +1,8 @@
-NAME	 := zatsu_monitor
+NAME     := zatsu_monitor
 VERSION  := $(shell cat VERSION)
 REVISION := $(shell git rev-parse --short HEAD)
 
-SRCS	:= $(shell find . -type f -name '*.go')
+SRCS    := $(shell find . -type f -name '*.go')
 LDFLAGS := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\" -extldflags \"-static\""
 
 DIST_DIRS := find * -type d -exec
