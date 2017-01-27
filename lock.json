@@ -1,0 +1,53 @@
+{
+    "memo": "",
+    "projects": [
+        {
+            "name": "github.com/golang/snappy",
+            "branch": "master",
+            "revision": "d7b1e156f50d3c4664f683603af70e3e47fa0aa2",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/griffin-stewie/go-chatwork",
+            "branch": "master",
+            "revision": "0bc2f98bf712a8302870512fdfc8ea3e18d18f32",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/nlopes/slack",
+            "branch": "master",
+            "revision": "e337a7316d3fe9aa55b7063035d6d32f3dbcaeb9",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/syndtr/goleveldb",
+            "branch": "master",
+            "revision": "cfa635847112c5dc4782e128fa7e0d05fdbfb394",
+            "packages": [
+                "leveldb"
+            ]
+        },
+        {
+            "name": "golang.org/x/net",
+            "branch": "master",
+            "revision": "76e74a336561c500a376b406eb649727eeb3477f",
+            "packages": [
+                "websocket"
+            ]
+        },
+        {
+            "name": "gopkg.in/yaml.v2",
+            "branch": "v2",
+            "revision": "a83829b6f1293c91addabc89d0571c246397bbf4",
+            "packages": [
+                "."
+            ]
+        }
+    ]
+}
