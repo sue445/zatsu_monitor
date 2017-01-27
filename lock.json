@@ -20,7 +20,7 @@
         {
             "name": "github.com/griffin-stewie/go-chatwork",
             "branch": "master",
-            "revision": "0bc2f98bf712a8302870512fdfc8ea3e18d18f32",
+            "revision": "a03aef7b22a62a2b0c7f2d5c409db523b748be48",
             "packages": [
                 "."
             ]
