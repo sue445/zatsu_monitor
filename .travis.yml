@@ -5,11 +5,11 @@ go:
   - 1.7
   - tip
 before_install:
+  - go get github.com/golang/dep/...
   - go get github.com/mattn/goveralls
   - go get golang.org/x/tools/cmd/cover
 install:
-  - go get -u ./...
-  - go get -u -t ./...
+  - $GOPATH/bin/dep ensure
 script:
   - go test
   - "$HOME/gopath/bin/goveralls -service=travis-ci"
