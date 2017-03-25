@@ -14,6 +14,7 @@ bin/$(NAME): $(SRCS)
 clean:
 	rm -rf bin/*
 	rm -rf dist/*
+	rm -rf vendor/
 
 .PHONY: package
 package:
