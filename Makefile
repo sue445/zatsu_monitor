@@ -1,3 +1,4 @@
+# Requirements: git, go, go dep
 NAME     := zatsu_monitor
 VERSION  := $(shell cat VERSION)
 REVISION := $(shell git rev-parse --short HEAD)
@@ -14,9 +15,13 @@ bin/$(NAME): $(SRCS)
 clean:
 	rm -rf bin/*
 	rm -rf dist/*
+	rm -rf vendor/
+
+vendor:
+	dep ensure
 
 .PHONY: package
-package:
+package: vendor
 	for os in darwin linux windows; do \
 		if [ $$os = "windows" ]; then \
 			exefile="$(NAME).exe" ; \
