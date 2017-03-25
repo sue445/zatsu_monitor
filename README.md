@@ -103,3 +103,6 @@ go get -u -t ./...
 cp .env.example .env
 vi .env
 ```
+
+## Changelog
+https://github.com/sue445/zatsu_monitor/releases
