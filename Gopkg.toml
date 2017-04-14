@@ -1,0 +1,24 @@
+
+[[dependencies]]
+  branch = "master"
+  name = "github.com/griffin-stewie/go-chatwork"
+
+[[dependencies]]
+  branch = "master"
+  name = "github.com/joho/godotenv"
+
+[[dependencies]]
+  branch = "master"
+  name = "github.com/nlopes/slack"
+
+[[dependencies]]
+  branch = "master"
+  name = "github.com/stretchr/testify"
+
+[[dependencies]]
+  branch = "master"
+  name = "github.com/syndtr/goleveldb"
+
+[[dependencies]]
+  branch = "v2"
+  name = "gopkg.in/yaml.v2"
