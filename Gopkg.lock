@@ -1,4 +1,4 @@
-memo = "4e970f12e37d68518ee8313acbe7ebed178948a97a793ab67d4b8a8155bcb7d1"
+memo = "948b04e8edefa75850ea6660dd03a31e98b2a802296ccbe058995a862d989e77"
 
 [[projects]]
   name = "github.com/davecgh/go-spew"
@@ -10,25 +10,25 @@ memo = "4e970f12e37d68518ee8313acbe7ebed178948a97a793ab67d4b8a8155bcb7d1"
   branch = "master"
   name = "github.com/golang/snappy"
   packages = ["."]
-  revision = "d7b1e156f50d3c4664f683603af70e3e47fa0aa2"
+  revision = "553a641470496b2327abcac10b36396bd98e45c9"
 
 [[projects]]
   branch = "master"
   name = "github.com/griffin-stewie/go-chatwork"
   packages = ["."]
-  revision = "0bc2f98bf712a8302870512fdfc8ea3e18d18f32"
+  revision = "a03aef7b22a62a2b0c7f2d5c409db523b748be48"
 
 [[projects]]
   branch = "master"
   name = "github.com/joho/godotenv"
   packages = ["."]
-  revision = "4ed13390c0acd2ff4e371e64d8b97c8954138243"
+  revision = "325433c502d409f3c3dc820098fb0cfe38d98dc7"
 
 [[projects]]
   branch = "master"
   name = "github.com/nlopes/slack"
   packages = ["."]
-  revision = "e337a7316d3fe9aa55b7063035d6d32f3dbcaeb9"
+  revision = "72d15a0fc0b773a59c00f78b9e7d97eeb8c4281f"
 
 [[projects]]
   name = "github.com/pmezard/go-difflib"
@@ -40,22 +40,22 @@ memo = "4e970f12e37d68518ee8313acbe7ebed178948a97a793ab67d4b8a8155bcb7d1"
   branch = "master"
   name = "github.com/stretchr/testify"
   packages = ["assert"]
-  revision = "6cb3b85ef5a0efef77caef88363ec4d4b5c0976d"
+  revision = "4d4bfba8f1d1027c4fdbe371823030df51419987"
 
 [[projects]]
   branch = "master"
   name = "github.com/syndtr/goleveldb"
   packages = ["leveldb","leveldb/cache","leveldb/comparer","leveldb/errors","leveldb/filter","leveldb/iterator","leveldb/journal","leveldb/memdb","leveldb/opt","leveldb/storage","leveldb/table","leveldb/util"]
-  revision = "cfa635847112c5dc4782e128fa7e0d05fdbfb394"
+  revision = "8c81ea47d4c41a385645e133e15510fc6a2a74b4"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/net"
   packages = ["websocket"]
-  revision = "76e74a336561c500a376b406eb649727eeb3477f"
+  revision = "513929065c19401a1c7b76ecd942f9f86a0c061b"
 
 [[projects]]
   branch = "v2"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
-  revision = "a83829b6f1293c91addabc89d0571c246397bbf4"
+  revision = "cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b"
