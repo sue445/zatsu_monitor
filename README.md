@@ -97,9 +97,11 @@ google:
 
 ## Development
 ### Setup
+At first, install [go dep](https://github.com/golang/dep)
+
 ```sh
-go get -u ./...
-go get -u -t ./...
+dep ensure
+
 cp .env.example .env
 vi .env
 ```
