@@ -4,7 +4,7 @@ package main
 type PostStatusParam struct {
 	CheckURL                            string
 	BeforeStatusCode, CurrentStatusCode int
-	HttpError                           error
+	HTTPError                           error
 	ResponseTime                        float64
 }
 

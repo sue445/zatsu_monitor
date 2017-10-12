@@ -45,8 +45,8 @@ func (c *ChatworkNotifier) PostStatus(param *PostStatusParam) error {
 responseTime: %f sec`
 	body := fmt.Sprintf(format, param.BeforeStatusCode, param.CurrentStatusCode, param.ResponseTime)
 
-	if param.HttpError != nil {
-		body += fmt.Sprintf("\nhttpError: %v", param.HttpError)
+	if param.HTTPError != nil {
+		body += fmt.Sprintf("\nhttpError: %v", param.HTTPError)
 	}
 
 	message := fmt.Sprintf("[info][title]%s[/title]%s[/info]", title, body)

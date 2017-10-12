@@ -55,8 +55,8 @@ statusCode: %d -> %d
 responseTime: %f sec`
 	message := fmt.Sprintf(format, param.CheckURL, statusText, param.BeforeStatusCode, param.CurrentStatusCode, param.ResponseTime)
 
-	if param.HttpError != nil {
-		message += fmt.Sprintf("\nhttpError: %v", param.HttpError)
+	if param.HTTPError != nil {
+		message += fmt.Sprintf("\nhttpError: %v", param.HTTPError)
 	}
 
 	params := slack.NewPostMessageParameters()

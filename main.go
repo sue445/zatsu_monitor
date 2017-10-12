@@ -104,7 +104,7 @@ func perform(name string, values map[string]string) {
 			CheckURL:          checkURL,
 			BeforeStatusCode:  beforeStatusCode,
 			CurrentStatusCode: currentStatusCode,
-			HttpError:         httpError,
+			HTTPError:         httpError,
 			ResponseTime:      responseTime,
 		}
 		notifier.PostStatus(&param)

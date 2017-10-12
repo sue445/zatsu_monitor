@@ -37,7 +37,7 @@ func TestSlackNotifier_PostStatus_Successful(t *testing.T) {
 		CheckURL:          "https://www.google.co.jp/",
 		BeforeStatusCode:  500,
 		CurrentStatusCode: 200,
-		HttpError:         nil,
+		HTTPError:         nil,
 	}
 	err := notifier.PostStatus(&param)
 	assert.NoError(t, err)
@@ -54,7 +54,7 @@ func TestSlackNotifier_PostStatus_Failure(t *testing.T) {
 		CheckURL:          "https://www.google.co.jp/aaa",
 		BeforeStatusCode:  0,
 		CurrentStatusCode: 404,
-		HttpError:         nil,
+		HTTPError:         nil,
 	}
 	err := notifier.PostStatus(&param)
 	assert.NoError(t, err)
@@ -71,7 +71,7 @@ func TestSlackNotifier_PostStatus_HasError(t *testing.T) {
 		CheckURL:          "https://aaaaaaaaa/",
 		BeforeStatusCode:  0,
 		CurrentStatusCode: 0,
-		HttpError:         errors.New("Test"),
+		HTTPError:         errors.New("Test"),
 	}
 	err := notifier.PostStatus(&param)
 	assert.NoError(t, err)
