@@ -6,16 +6,16 @@ import (
 	"testing"
 )
 
-const TEST_DB_FILE = "tmp/zatsu"
+const TestDbFile = "tmp/zatsu"
 
 func NewTestStatusStore() *StatusStore {
-	return NewStatusStore(TEST_DB_FILE)
+	return NewStatusStore(TestDbFile)
 }
 
 func DeleteData(key string) {
-	db, err := leveldb.OpenFile(TEST_DB_FILE, nil)
+	db, err := leveldb.OpenFile(TestDbFile, nil)
 	if err != nil {
-		panic("Failed: OpenFile " + TEST_DB_FILE)
+		panic("Failed: OpenFile " + TestDbFile)
 	}
 	defer db.Close()
 
