@@ -101,7 +101,7 @@ func perform(name string, values map[string]string) {
 	if isNotify(beforeStatusCode, currentStatusCode, onlyCheckOnTheOrderOf100) {
 		// When status code changes from the previous, notify
 		param := PostStatusParam{
-			CheckUrl:          checkURL,
+			CheckURL:          checkURL,
 			BeforeStatusCode:  beforeStatusCode,
 			CurrentStatusCode: currentStatusCode,
 			HttpError:         httpError,

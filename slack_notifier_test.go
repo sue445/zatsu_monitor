@@ -34,7 +34,7 @@ func TestSlackNotifier_PostStatus_Successful(t *testing.T) {
 	}
 
 	param := PostStatusParam{
-		CheckUrl:          "https://www.google.co.jp/",
+		CheckURL:          "https://www.google.co.jp/",
 		BeforeStatusCode:  500,
 		CurrentStatusCode: 200,
 		HttpError:         nil,
@@ -51,7 +51,7 @@ func TestSlackNotifier_PostStatus_Failure(t *testing.T) {
 	}
 
 	param := PostStatusParam{
-		CheckUrl:          "https://www.google.co.jp/aaa",
+		CheckURL:          "https://www.google.co.jp/aaa",
 		BeforeStatusCode:  0,
 		CurrentStatusCode: 404,
 		HttpError:         nil,
@@ -68,7 +68,7 @@ func TestSlackNotifier_PostStatus_HasError(t *testing.T) {
 	}
 
 	param := PostStatusParam{
-		CheckUrl:          "https://aaaaaaaaa/",
+		CheckURL:          "https://aaaaaaaaa/",
 		BeforeStatusCode:  0,
 		CurrentStatusCode: 0,
 		HttpError:         errors.New("Test"),

@@ -40,7 +40,7 @@ func (c *ChatworkNotifier) PostStatus(param *PostStatusParam) error {
 		statusText = "down (devil)"
 	}
 
-	title := fmt.Sprintf("%s is %s", param.CheckUrl, statusText)
+	title := fmt.Sprintf("%s is %s", param.CheckURL, statusText)
 	format := `statusCode: %d -> %d
 responseTime: %f sec`
 	body := fmt.Sprintf(format, param.BeforeStatusCode, param.CurrentStatusCode, param.ResponseTime)

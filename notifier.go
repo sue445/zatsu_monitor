@@ -2,7 +2,7 @@ package main
 
 // PostStatusParam represents request parameter for PostStatus
 type PostStatusParam struct {
-	CheckUrl                            string
+	CheckURL                            string
 	BeforeStatusCode, CurrentStatusCode int
 	HttpError                           error
 	ResponseTime                        float64
