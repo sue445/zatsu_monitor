@@ -71,14 +71,14 @@ func perform(name string, values map[string]string) {
 		}
 	}
 
-	checkUrl := values["check_url"]
+	checkURL := values["check_url"]
 
 	start := time.Now()
-	currentStatusCode, httpError := GetStatusCode(checkUrl)
+	currentStatusCode, httpError := GetStatusCode(checkURL)
 	end := time.Now()
 	responseTime := (end.Sub(start)).Seconds()
 
-	fmt.Printf("time:%v\tcheck_url:%s\tstatus:%d\tresponse_time:%f\terror:%v\n", time.Now(), checkUrl, currentStatusCode, responseTime, httpError)
+	fmt.Printf("time:%v\tcheck_url:%s\tstatus:%d\tresponse_time:%f\terror:%v\n", time.Now(), checkURL, currentStatusCode, responseTime, httpError)
 
 	store := NewStatusStore(dataDir)
 	beforeStatusCode, err := store.GetDbStatus(name)
@@ -101,7 +101,7 @@ func perform(name string, values map[string]string) {
 	if isNotify(beforeStatusCode, currentStatusCode, onlyCheckOnTheOrderOf100) {
 		// When status code changes from the previous, notify
 		param := PostStatusParam{
-			CheckUrl:          checkUrl,
+			CheckUrl:          checkURL,
 			BeforeStatusCode:  beforeStatusCode,
 			CurrentStatusCode: currentStatusCode,
 			HttpError:         httpError,
