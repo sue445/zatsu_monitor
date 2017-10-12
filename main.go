@@ -51,17 +51,17 @@ func printVersion() {
 }
 
 func perform(name string, values map[string]string) {
-	notifier_type := values["type"]
+	notifierType := values["type"]
 
 	var notifier Notifier
 
-	switch notifier_type {
+	switch notifierType {
 	case "chatwork":
 		notifier = NewChatworkNotifier(values["api_token"], values["room_id"])
 	case "slack":
 		notifier = NewSlackNotifier(values["api_token"], values["user_name"], values["channel"])
 	default:
-		panic(fmt.Sprintf("Unknown type: %s in %s", notifier_type, configFile))
+		panic(fmt.Sprintf("Unknown type: %s in %s", notifierType, configFile))
 	}
 
 	// If it does not exist even one expected key, skip
