@@ -13,12 +13,12 @@ type isNotifyFixture struct {
 }
 
 var isNotifyFixtures = []isNotifyFixture{
-	{false, NOT_FOUND_KEY, 200, false},
+	{false, NotFoundKey, 200, false},
 	{false, 200, 200, false},
 	{false, 200, 500, true},
 	{false, 500, 501, true},
 	{false, 200, 201, true},
-	{true, NOT_FOUND_KEY, 200, false},
+	{true, NotFoundKey, 200, false},
 	{true, 200, 200, false},
 	{true, 200, 500, true},
 	{true, 500, 501, false},

@@ -12,12 +12,12 @@ func NewTestChatworkNotifier() *ChatworkNotifier {
 	godotenv.Load()
 
 	apiToken := os.Getenv("CHATWORK_API_TOKEN")
-	roomId := os.Getenv("CHATWORK_ROOM_ID")
+	roomID := os.Getenv("CHATWORK_ROOM_ID")
 
-	if len(apiToken) == 0 || len(roomId) == 0 {
+	if len(apiToken) == 0 || len(roomID) == 0 {
 		return nil
 	}
-	return NewChatworkNotifier(apiToken, roomId)
+	return NewChatworkNotifier(apiToken, roomID)
 }
 
 func TestChatworkNotifier_PostStatus_True(t *testing.T) {
@@ -27,10 +27,10 @@ func TestChatworkNotifier_PostStatus_True(t *testing.T) {
 	}
 
 	param := PostStatusParam{
-		CheckUrl:          "https://www.google.co.jp/",
+		CheckURL:          "https://www.google.co.jp/",
 		BeforeStatusCode:  500,
 		CurrentStatusCode: 200,
-		HttpError:         nil,
+		HTTPError:         nil,
 	}
 
 	err := notifier.PostStatus(&param)
@@ -44,10 +44,10 @@ func TestChatworkNotifier_PostStatus_False(t *testing.T) {
 	}
 
 	param := PostStatusParam{
-		CheckUrl:          "https://www.google.co.jp/aaa",
+		CheckURL:          "https://www.google.co.jp/aaa",
 		BeforeStatusCode:  0,
 		CurrentStatusCode: 404,
-		HttpError:         nil,
+		HTTPError:         nil,
 	}
 	err := notifier.PostStatus(&param)
 	assert.NoError(t, err)
@@ -60,10 +60,10 @@ func TestChatworkNotifier_PostStatus_HasError(t *testing.T) {
 	}
 
 	param := PostStatusParam{
-		CheckUrl:          "https://aaaaaaaaa/",
+		CheckURL:          "https://aaaaaaaaa/",
 		BeforeStatusCode:  0,
 		CurrentStatusCode: 0,
-		HttpError:         errors.New("Test"),
+		HTTPError:         errors.New("Test"),
 	}
 	err := notifier.PostStatus(&param)
 	assert.NoError(t, err)

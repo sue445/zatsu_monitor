@@ -6,20 +6,24 @@ import (
 	"github.com/syndtr/goleveldb/leveldb"
 )
 
+// StatusStore represents current status cache store
 type StatusStore struct {
 	databaseFile string
 }
 
 const (
-	NOT_FOUND_KEY = -1
+	// NotFoundKey represents value if key is not found
+	NotFoundKey = -1
 )
 
+// NewStatusStore create new StatusStore instance
 func NewStatusStore(databaseFile string) *StatusStore {
 	s := new(StatusStore)
 	s.databaseFile = databaseFile
 	return s
 }
 
+// GetDbStatus returns status code for specified key
 func (s *StatusStore) GetDbStatus(key string) (int, error) {
 	db, err := leveldb.OpenFile(s.databaseFile, nil)
 	if err != nil {
@@ -28,7 +32,7 @@ func (s *StatusStore) GetDbStatus(key string) (int, error) {
 	defer db.Close()
 
 	if ret, _ := db.Has([]byte(key), nil); !ret {
-		return NOT_FOUND_KEY, nil
+		return NotFoundKey, nil
 	}
 
 	data, err := db.Get([]byte(key), nil)
@@ -39,6 +43,7 @@ func (s *StatusStore) GetDbStatus(key string) (int, error) {
 	return int(statusCode), nil
 }
 
+// SaveDbStatus saves status code for specified key
 func (s *StatusStore) SaveDbStatus(key string, statusCode int) error {
 	db, err := leveldb.OpenFile(s.databaseFile, nil)
 	if err != nil {

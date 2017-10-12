@@ -7,7 +7,10 @@ import (
 )
 
 var (
-	Version  string
+	// Version represents app version (injected from ldflags)
+	Version string
+
+	// Revision represents app revision (injected from ldflags)
 	Revision string
 )
 var configFile, dataDir string
@@ -48,17 +51,17 @@ func printVersion() {
 }
 
 func perform(name string, values map[string]string) {
-	notifier_type := values["type"]
+	notifierType := values["type"]
 
 	var notifier Notifier
 
-	switch notifier_type {
+	switch notifierType {
 	case "chatwork":
 		notifier = NewChatworkNotifier(values["api_token"], values["room_id"])
 	case "slack":
 		notifier = NewSlackNotifier(values["api_token"], values["user_name"], values["channel"])
 	default:
-		panic(fmt.Sprintf("Unknown type: %s in %s", notifier_type, configFile))
+		panic(fmt.Sprintf("Unknown type: %s in %s", notifierType, configFile))
 	}
 
 	// If it does not exist even one expected key, skip
@@ -68,14 +71,14 @@ func perform(name string, values map[string]string) {
 		}
 	}
 
-	checkUrl := values["check_url"]
+	checkURL := values["check_url"]
 
 	start := time.Now()
-	currentStatusCode, httpError := GetStatusCode(checkUrl)
+	currentStatusCode, httpError := GetStatusCode(checkURL)
 	end := time.Now()
 	responseTime := (end.Sub(start)).Seconds()
 
-	fmt.Printf("time:%v\tcheck_url:%s\tstatus:%d\tresponse_time:%f\terror:%v\n", time.Now(), checkUrl, currentStatusCode, responseTime, httpError)
+	fmt.Printf("time:%v\tcheck_url:%s\tstatus:%d\tresponse_time:%f\terror:%v\n", time.Now(), checkURL, currentStatusCode, responseTime, httpError)
 
 	store := NewStatusStore(dataDir)
 	beforeStatusCode, err := store.GetDbStatus(name)
@@ -98,10 +101,10 @@ func perform(name string, values map[string]string) {
 	if isNotify(beforeStatusCode, currentStatusCode, onlyCheckOnTheOrderOf100) {
 		// When status code changes from the previous, notify
 		param := PostStatusParam{
-			CheckUrl:          checkUrl,
+			CheckURL:          checkURL,
 			BeforeStatusCode:  beforeStatusCode,
 			CurrentStatusCode: currentStatusCode,
-			HttpError:         httpError,
+			HTTPError:         httpError,
 			ResponseTime:      responseTime,
 		}
 		notifier.PostStatus(&param)
@@ -109,7 +112,7 @@ func perform(name string, values map[string]string) {
 }
 
 func isNotify(beforeStatusCode int, currentStatusCode int, checkOnlyTopOfStatusCode bool) bool {
-	if beforeStatusCode == NOT_FOUND_KEY {
+	if beforeStatusCode == NotFoundKey {
 		return false
 	}
 

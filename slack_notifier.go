@@ -7,12 +7,14 @@ import (
 
 var slackExpectedKeys = []string{"type", "check_url", "api_token", "channel"}
 
+// SlackNotifier represents notifier for Slack
 type SlackNotifier struct {
 	apiToken string
 	userName string
 	channel  string
 }
 
+// NewSlackNotifier create new SlackNotifier instance
 func NewSlackNotifier(apiToken string, userName string, channel string) *SlackNotifier {
 	s := new(SlackNotifier)
 	s.apiToken = apiToken
@@ -27,10 +29,12 @@ func NewSlackNotifier(apiToken string, userName string, channel string) *SlackNo
 	return s
 }
 
+// ExpectedKeys returns expected keys for SlackNotifier
 func (s *SlackNotifier) ExpectedKeys() []string {
 	return slackExpectedKeys
 }
 
+// PostStatus perform posting current status for URL
 func (s *SlackNotifier) PostStatus(param *PostStatusParam) error {
 	var statusText, iconEmoji, userName string
 
@@ -49,10 +53,10 @@ func (s *SlackNotifier) PostStatus(param *PostStatusParam) error {
 	format := `%s is %s
 statusCode: %d -> %d
 responseTime: %f sec`
-	message := fmt.Sprintf(format, param.CheckUrl, statusText, param.BeforeStatusCode, param.CurrentStatusCode, param.ResponseTime)
+	message := fmt.Sprintf(format, param.CheckURL, statusText, param.BeforeStatusCode, param.CurrentStatusCode, param.ResponseTime)
 
-	if param.HttpError != nil {
-		message += fmt.Sprintf("\nhttpError: %v", param.HttpError)
+	if param.HTTPError != nil {
+		message += fmt.Sprintf("\nhttpError: %v", param.HTTPError)
 	}
 
 	params := slack.NewPostMessageParameters()
