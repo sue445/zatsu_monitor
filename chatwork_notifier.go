@@ -14,10 +14,10 @@ type ChatworkNotifier struct {
 }
 
 // NewChatworkNotifier create new ChatworkNotifier instance
-func NewChatworkNotifier(apiToken string, roomId string) *ChatworkNotifier {
+func NewChatworkNotifier(apiToken string, roomID string) *ChatworkNotifier {
 	c := new(ChatworkNotifier)
 	c.apiToken = apiToken
-	c.roomID = roomId
+	c.roomID = roomID
 	return c
 }
 
