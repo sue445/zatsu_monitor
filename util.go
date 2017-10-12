@@ -2,6 +2,7 @@ package main
 
 import "net/http"
 
+// GetStatusCode checks and returns status code for URL
 func GetStatusCode(url string) (int, error) {
 	resp, err := http.Get(url)
 
@@ -13,6 +14,7 @@ func GetStatusCode(url string) (int, error) {
 	return resp.StatusCode, nil
 }
 
+// IsSuccessfulStatus returns whether status code is successful. (2xx or 3xx)
 func IsSuccessfulStatus(statusCode int) bool {
 	n := statusCode / 100
 

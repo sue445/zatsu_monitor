@@ -7,11 +7,13 @@ import (
 
 var chatworkExpectedKeys = []string{"type", "check_url", "room_id", "api_token"}
 
+// ChatworkNotifier represents notifier for ChatWork
 type ChatworkNotifier struct {
 	apiToken string
 	roomId   string
 }
 
+// NewChatworkNotifier create new ChatworkNotifier instance
 func NewChatworkNotifier(apiToken string, roomId string) *ChatworkNotifier {
 	c := new(ChatworkNotifier)
 	c.apiToken = apiToken
@@ -19,10 +21,12 @@ func NewChatworkNotifier(apiToken string, roomId string) *ChatworkNotifier {
 	return c
 }
 
+// ExpectedKeys returns expected keys for ChatworkNotifier
 func (c *ChatworkNotifier) ExpectedKeys() []string {
 	return chatworkExpectedKeys
 }
 
+// PostStatus perform posting current status for URL
 func (c *ChatworkNotifier) PostStatus(param *PostStatusParam) error {
 	chatwork := chatwork.NewClient(c.apiToken)
 
