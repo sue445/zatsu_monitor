@@ -112,7 +112,7 @@ func perform(name string, values map[string]string) {
 }
 
 func isNotify(beforeStatusCode int, currentStatusCode int, checkOnlyTopOfStatusCode bool) bool {
-	if beforeStatusCode == NOT_FOUND_KEY {
+	if beforeStatusCode == NotFoundKey {
 		return false
 	}
 

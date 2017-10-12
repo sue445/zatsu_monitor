@@ -12,8 +12,8 @@ type StatusStore struct {
 }
 
 const (
-	// NOT_FOUND_KEY represents value if key is not found
-	NOT_FOUND_KEY = -1
+	// NotFoundKey represents value if key is not found
+	NotFoundKey = -1
 )
 
 // NewStatusStore create new StatusStore instance
@@ -32,7 +32,7 @@ func (s *StatusStore) GetDbStatus(key string) (int, error) {
 	defer db.Close()
 
 	if ret, _ := db.Has([]byte(key), nil); !ret {
-		return NOT_FOUND_KEY, nil
+		return NotFoundKey, nil
 	}
 
 	data, err := db.Get([]byte(key), nil)

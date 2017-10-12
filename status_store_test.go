@@ -38,5 +38,5 @@ func TestStatusStore_GetDbStatus_NotExists(t *testing.T) {
 	actual, err := store.GetDbStatus("key")
 
 	assert.NoError(t, err)
-	assert.Equal(t, NOT_FOUND_KEY, actual)
+	assert.Equal(t, NotFoundKey, actual)
 }
