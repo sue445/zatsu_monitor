@@ -12,12 +12,12 @@ func NewTestChatworkNotifier() *ChatworkNotifier {
 	godotenv.Load()
 
 	apiToken := os.Getenv("CHATWORK_API_TOKEN")
-	roomId := os.Getenv("CHATWORK_ROOM_ID")
+	roomID := os.Getenv("CHATWORK_ROOM_ID")
 
-	if len(apiToken) == 0 || len(roomId) == 0 {
+	if len(apiToken) == 0 || len(roomID) == 0 {
 		return nil
 	}
-	return NewChatworkNotifier(apiToken, roomId)
+	return NewChatworkNotifier(apiToken, roomID)
 }
 
 func TestChatworkNotifier_PostStatus_True(t *testing.T) {
