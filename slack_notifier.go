@@ -1,23 +1,26 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"github.com/bluele/slack"
 )
 
-var slackExpectedKeys = []string{"type", "check_url", "api_token", "channel"}
+var slackExpectedKeys = []string{"type", "api_token", "channel"}
 
 // SlackNotifier represents notifier for Slack
 type SlackNotifier struct {
-	apiToken string
-	userName string
-	channel  string
+	apiToken   string
+	webhookURL string
+	userName   string
+	channel    string
 }
 
 // NewSlackNotifier create new SlackNotifier instance
-func NewSlackNotifier(apiToken string, userName string, channel string) *SlackNotifier {
+func NewSlackNotifier(apiToken string, webhookURL string, userName string, channel string) *SlackNotifier {
 	s := new(SlackNotifier)
 	s.apiToken = apiToken
+	s.webhookURL = webhookURL
 	s.channel = channel
 
 	if len(userName) == 0 {
@@ -59,13 +62,27 @@ responseTime: %f sec`
 		message += fmt.Sprintf("\nhttpError: %v", param.HTTPError)
 	}
 
-	params := slack.ChatPostMessageOpt{}
-	params.Username = userName
-	params.IconEmoji = iconEmoji
+	if len(s.apiToken) > 0 {
+		params := slack.ChatPostMessageOpt{
+			Username:  userName,
+			IconEmoji: iconEmoji,
+		}
 
-	api := slack.New(s.apiToken)
+		api := slack.New(s.apiToken)
 
-	err := api.ChatPostMessage(s.channel, message, &params)
+		return api.ChatPostMessage(s.channel, message, &params)
 
-	return err
+	} else if len(s.webhookURL) > 0 {
+		hook := slack.NewWebHook(s.webhookURL)
+		params := slack.WebHookPostPayload{
+			Text:      message,
+			Channel:   s.channel,
+			Username:  userName,
+			IconEmoji: iconEmoji,
+		}
+		return hook.PostMessage(&params)
+
+	} else {
+		return errors.New("Either `api_token` or `webhook_url` is required")
+	}
 }

@@ -42,7 +42,11 @@ Usage of ./zatsu_monitor:
 google:
   type: slack
   check_url: "https://www.google.com/"
+
   api_token: "AAAAAAAA"
+  # or
+  # webhook_url: "https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXX"
+
   channel: "#general"
   user_name: "zatsu_monitor"
   # check_only_top_of_status_code: true
@@ -60,7 +64,9 @@ github:
 #### [Slack](https://slack.com/)
 * `type` : *slack* (fixed value)
 * `check_url` : URL for checking (required)
-* `api_token` : Slack API Token (required)
+* `api_token` : Slack API Token (either `api_token` or `webhook_url` is required)
+* `webhook_url` : Slack Incoming Webhook URL (either `api_token` or `webhook_url` is required)
+  * https://slack.com/apps/A0F7XDUAZ-incoming-webhooks
 * `channel` : Channel for post (required)
 * `user_name` : Name for post (optional. default is *zatsu_monitor*)
 
@@ -80,7 +86,10 @@ github:
 slack: &common
   type: slack
   channel: "#general"
+
   api_token: "xoxp-0000000000-0000000000-0000000000-000000"
+  # or
+  # webhook_url: "https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXX"
 
 github:
   # inherit common values
