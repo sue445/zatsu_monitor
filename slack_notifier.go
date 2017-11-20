@@ -59,13 +59,13 @@ responseTime: %f sec`
 		message += fmt.Sprintf("\nhttpError: %v", param.HTTPError)
 	}
 
-	params := slack.NewPostMessageParameters()
+	params := slack.ChatPostMessageOpt{}
 	params.Username = userName
 	params.IconEmoji = iconEmoji
 
 	api := slack.New(s.apiToken)
 
-	_, _, err := api.PostMessage(s.channel, message, params)
+	err := api.ChatPostMessage(s.channel, message, &params)
 
 	return err
 }
