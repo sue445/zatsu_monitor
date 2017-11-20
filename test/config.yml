@@ -2,6 +2,7 @@ name1:
   check_url: "http://example.com/1"
   type: slack
   api_token: "xoxp-0000000000-0000000000-0000000000-000000"
+  webhook_url: "https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXX"
   user_name: "zatsu_monitor"
   channel: "#general"
 name2:
