@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/nlopes/slack"
+	"github.com/bluele/slack"
 )
 
 var slackExpectedKeys = []string{"type", "check_url", "api_token", "channel"}

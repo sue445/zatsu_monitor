@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  branch = "master"
+  name = "github.com/bluele/slack"
+  packages = ["."]
+  revision = "fb5cadcf9ed2433b94f44b2bc046a7f94554533e"
+
+[[projects]]
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
@@ -26,12 +32,6 @@
   revision = "325433c502d409f3c3dc820098fb0cfe38d98dc7"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/nlopes/slack"
-  packages = ["."]
-  revision = "72d15a0fc0b773a59c00f78b9e7d97eeb8c4281f"
-
-[[projects]]
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
   revision = "792786c7400a136282c1664665ae0a8db921c6c2"
@@ -50,12 +50,6 @@
   revision = "8c81ea47d4c41a385645e133e15510fc6a2a74b4"
 
 [[projects]]
-  branch = "master"
-  name = "golang.org/x/net"
-  packages = ["websocket"]
-  revision = "513929065c19401a1c7b76ecd942f9f86a0c061b"
-
-[[projects]]
   branch = "v2"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
@@ -64,6 +58,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "6db07a9ff1d8ca7bc0216f6ca101a9440074e777be16271acc05d4259b0c84f9"
+  inputs-digest = "9e708e83902f50119273c12096135813d4936d5abdd367575f611d91ceccc6e9"
   solver-name = "gps-cdcl"
   solver-version = 1
