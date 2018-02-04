@@ -6,7 +6,7 @@ import (
 	"github.com/bluele/slack"
 )
 
-var slackExpectedKeys = []string{"type", "api_token", "channel"}
+var slackExpectedKeys = []string{"type", "check_url", "channel"}
 
 // SlackNotifier represents notifier for Slack
 type SlackNotifier struct {
