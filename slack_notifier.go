@@ -39,7 +39,7 @@ func (s *SlackNotifier) ExpectedKeys() []string {
 
 // PostStatus perform posting current status for URL
 func (s *SlackNotifier) PostStatus(param *PostStatusParam) error {
-	var statusText, iconEmoji, userName string
+	var statusText, iconEmoji, userName, attachmentColor string
 
 	successful := IsSuccessfulStatus(param.CurrentStatusCode)
 
@@ -47,10 +47,12 @@ func (s *SlackNotifier) PostStatus(param *PostStatusParam) error {
 		statusText = "ok"
 		iconEmoji = ":green_heart:"
 		userName = s.userName + " Successful"
+		attachmentColor = "good"
 	} else {
 		statusText = "down"
 		iconEmoji = ":broken_heart:"
 		userName = s.userName + " Failure"
+		attachmentColor = "danger"
 	}
 
 	format := `%s is %s
@@ -66,19 +68,24 @@ responseTime: %f sec`
 		params := slack.ChatPostMessageOpt{
 			Username:  userName,
 			IconEmoji: iconEmoji,
+			Attachments: []*slack.Attachment{
+				{Fallback: message, Text: message, Color: attachmentColor},
+			},
 		}
 
 		api := slack.New(s.apiToken)
 
-		return api.ChatPostMessage(s.channel, message, &params)
+		return api.ChatPostMessage(s.channel, "", &params)
 
 	} else if len(s.webhookURL) > 0 {
 		hook := slack.NewWebHook(s.webhookURL)
 		params := slack.WebHookPostPayload{
-			Text:      message,
 			Channel:   s.channel,
 			Username:  userName,
 			IconEmoji: iconEmoji,
+			Attachments: []*slack.Attachment{
+				{Fallback: message, Text: message, Color: attachmentColor},
+			},
 		}
 		return hook.PostMessage(&params)
 
