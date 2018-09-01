@@ -9,7 +9,7 @@ LDFLAGS := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(R
 .DEFAULT_GOAL := bin/$(NAME)
 
 bin/$(NAME): $(SRCS)
-	go build $(LDFLAGS) -o bin/$(NAME)
+	GO111MODULE=on go build $(LDFLAGS) -o bin/$(NAME)
 
 .PHONY: clean
 clean:
@@ -17,11 +17,8 @@ clean:
 	rm -rf dist/*
 	rm -rf vendor/
 
-vendor:
-	dep ensure
-
 .PHONY: package
-package: vendor
+package:
 	for os in darwin linux windows; do \
 		if [ $$os = "windows" ]; then \
 			exefile="$(NAME).exe" ; \
@@ -29,7 +26,7 @@ package: vendor
 			exefile="$(NAME)" ; \
 		fi ; \
 		for arch in amd64 386; do \
-			GOOS=$$os GOARCH=$$arch go build -a -tags netgo -installsuffix netgo $(LDFLAGS) -o dist/$${os}_$${arch}/$${exefile} ; \
+			GO111MODULE=on GOOS=$$os GOARCH=$$arch go build -a -tags netgo -installsuffix netgo $(LDFLAGS) -o dist/$${os}_$${arch}/$${exefile} ; \
 			cd dist/$${os}_$${arch} ; \
 			zip ../$(NAME)_$(VERSION)_$${os}_$${arch}.zip $${exefile} ; \
 			cd ../.. ; \
@@ -38,11 +35,11 @@ package: vendor
 
 .PHONY: install
 install:
-	go install $(LDFLAGS)
+	GO111MODULE=on go install $(LDFLAGS)
 
 .PHONY: test
 test:
-	go test
+	GO111MODULE=on go test
 
 .PHONY: tag
 tag:
