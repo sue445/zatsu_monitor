@@ -1,12 +1,16 @@
 github.com/bluele/slack v0.0.0-20170929071952-fb5cadcf9ed2 h1:AZMvNzZTAf0VWlW/4McKS9NhKMT/j/NqxfbdCzHBtpM=
 github.com/bluele/slack v0.0.0-20170929071952-fb5cadcf9ed2/go.mod h1:W679Ri2W93VLD8cVpEY/zLH1ow4zhJcCyjzrKxfM3QM=
+github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/golang/snappy v0.0.0-20170215233205-553a64147049 h1:K9KHZbXKpGydfDN0aZrsoHpLJlZsBrGMFWbgLDGnPZk=
 github.com/golang/snappy v0.0.0-20170215233205-553a64147049/go.mod h1:/XxbfmMg8lxefKM7IXC3fBNl/7bRcc72aCRzEWrmP2Q=
 github.com/griffin-stewie/go-chatwork v0.0.0-20170127153634-a03aef7b22a6 h1:fREyWzm1je4B2ijT0MKgKqkwVfmOkjuYuu5Zf3kzRxo=
 github.com/griffin-stewie/go-chatwork v0.0.0-20170127153634-a03aef7b22a6/go.mod h1:bjGNVRLolLSkaV2wOH8ezhDPKa50RvT+ppSAd4e+BAU=
+github.com/joho/godotenv v0.0.0-20170328200154-325433c502d4 h1:4efwqN/95XpF2pyttkH2f288+TcG0jFQUk0avks7zes=
 github.com/joho/godotenv v0.0.0-20170328200154-325433c502d4/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
+github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/stretchr/testify v0.0.0-20170130113145-4d4bfba8f1d1 h1:Zx8Rp9ozC4FPFxfEKRSUu8+Ay3sZxEUZ7JrCWMbGgvE=
 github.com/stretchr/testify v0.0.0-20170130113145-4d4bfba8f1d1/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
 github.com/syndtr/goleveldb v0.0.0-20170409015612-8c81ea47d4c4 h1:PoqFAtRY0Q02baZW5o00/NOTpTdTwVl+x1UnvpYK0Dc=
 github.com/syndtr/goleveldb v0.0.0-20170409015612-8c81ea47d4c4/go.mod h1:Z4AUp2Km+PwemOoO/VB5AOx9XSsIItzFjoJlOSiYmn0=
