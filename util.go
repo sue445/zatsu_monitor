@@ -4,7 +4,13 @@ import "net/http"
 
 // GetStatusCode checks and returns status code for URL
 func GetStatusCode(url string) (int, error) {
-	resp, err := http.Get(url)
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return 0, err
+	}
+	req.Header.Add("User-Agent", "Zatsu_Monitor/"+Version+"("+Revision+")")
+
+	resp, err := http.DefaultClient.Do(req)
 
 	if err != nil {
 		return 0, err
