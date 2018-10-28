@@ -1,4 +1,4 @@
-# Requirements: git, go, go dep
+# Requirements: git, go, vgo
 NAME     := zatsu_monitor
 VERSION  := $(shell cat VERSION)
 REVISION := $(shell git rev-parse --short HEAD)
