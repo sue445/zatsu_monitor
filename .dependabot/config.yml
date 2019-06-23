@@ -1,0 +1,12 @@
+# c.f. https://dependabot.com/docs/config-file/
+version: 1
+
+update_configs:
+  - package_manager: "go:modules"
+
+    directory: "/"
+
+    update_schedule: "weekly"
+
+    default_assignees:
+      - sue445
