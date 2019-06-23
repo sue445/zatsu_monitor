@@ -2,7 +2,7 @@ module github.com/sue445/zatsu_monitor
 
 require (
 	github.com/bluele/slack v0.0.0-20170929071952-fb5cadcf9ed2
-	github.com/davecgh/go-spew v1.1.0
+	github.com/davecgh/go-spew v1.1.1
 	github.com/golang/snappy v0.0.0-20170215233205-553a64147049
 	github.com/griffin-stewie/go-chatwork v0.0.0-20170127153634-a03aef7b22a6
 	github.com/joho/godotenv v0.0.0-20170328200154-325433c502d4
