@@ -1,0 +1,34 @@
+name: Go
+on: [push]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go 1.12
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.12
+        id: go
+
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v1
+
+      - name: Run test
+        run: |
+          set -xe
+          go test
+          go test -race
+        env:
+          GO111MODULE: "on"
+
+      - name: Run lint
+        run: |
+          set -xe
+          export GOPATH=`go env GOPATH`
+          export PATH=$GOPATH/bin:$PATH
+          ! gofmt -d . | grep '^'
+          go get -v -t -d ./...
+          go get -u golang.org/x/lint/golint
+          golint -set_exit_status
