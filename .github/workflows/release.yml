@@ -25,11 +25,6 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v1
 
-      - name: Debug
-        run: |
-          ls -l $GITHUB_EVENT_PATH
-          cat $GITHUB_EVENT_PATH | jq .
-
       - name: Build
         run: |
           set -xe
