@@ -1,0 +1,40 @@
+# c.f. https://nwpct1.hatenablog.com/entry/github-actions-release-go-binaries
+name: Release
+on:
+  push:
+    branches:
+      - "!*"
+    tags:
+      - "!*"
+  create:
+    tags:
+      - "v*.*.*"
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.12
+        id: go
+
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v1
+
+      - name: Build
+        run: |
+          set -xe
+          export GOPATH=`go env GOPATH`
+          export CREATE_EVENT_REF_TYPE=$(jq --raw-output .ref_type "$GITHUB_EVENT_PATH")
+          export TAGNAME=$(jq --raw-output .ref "$GITHUB_EVENT_PATH")
+          if [ "$CREATE_EVENT_REF_TYPE" != "tag" ]; then echo "ref_type is not a tag: ${CREATE_EVENT_REF_TYPE}" && exit 78; fi
+          make clean package
+          go get -u github.com/tcnksm/ghr
+          $GOPATH/bin/ghr -n ${TAGNAME} -b "Release ${TAGNAME}" ${TAGNAME} dist/
+        env:
+          GO111MODULE: "on"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
