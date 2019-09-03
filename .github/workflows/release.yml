@@ -7,6 +7,8 @@ on:
     tags:
       - "!*"
   create:
+    branches:
+      - "!*"
     tags:
       - "v*.*.*"
 
@@ -38,3 +40,14 @@ jobs:
         env:
           GO111MODULE: "on"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Slack Notification
+        uses: homoluctus/slatify@v1.0
+        if: always()
+        with:
+          job_name: '*release*'
+          type: ${{ job.status }}
+          channel: ${{ secrets.SLACK_CHANNEL }}
+          icon_emoji: ":octocat:"
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
