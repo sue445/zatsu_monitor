@@ -32,3 +32,14 @@ jobs:
           go get -v -t -d ./...
           go get -u golang.org/x/lint/golint
           golint -set_exit_status
+
+      - name: Slack Notification
+        uses: homoluctus/slatify@v1.0
+        if: always()
+        with:
+          job_name: '*go build*'
+          type: ${{ job.status }}
+          channel: ${{ secrets.SLACK_CHANNEL }}
+          icon_emoji: ":octocat:"
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
