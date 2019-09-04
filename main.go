@@ -16,15 +16,13 @@ var (
 var configFile, dataDir string
 var isPrintVersion bool
 
-func init() {
+func main() {
 	flag.StringVar(&configFile, "config", "", "Path to config file")
 	flag.StringVar(&dataDir, "data", "", "Path to data dir for cache")
 	flag.BoolVar(&isPrintVersion, "version", false, "Whether showing version")
 
 	flag.Parse()
-}
 
-func main() {
 	if isPrintVersion {
 		printVersion()
 		return
