@@ -11,8 +11,8 @@ import (
 func NewTestChatworkNotifier() *ChatworkNotifier {
 	godotenv.Load()
 
-	apiToken := os.Getenv("CHATWORK_API_TOKEN")
-	roomID := os.Getenv("CHATWORK_ROOM_ID")
+	apiToken := os.Getenv("TEST_CHATWORK_API_TOKEN")
+	roomID := os.Getenv("TEST_CHATWORK_ROOM_ID")
 
 	if len(apiToken) == 0 || len(roomID) == 0 {
 		return nil

@@ -19,10 +19,10 @@ const (
 func NewTestSlackNotifier(mode SlackNotifierMode) *SlackNotifier {
 	godotenv.Load()
 
-	apiToken := os.Getenv("SLACK_API_TOKEN")
-	webhookURL := os.Getenv("SLACK_WEBHOOK_URL")
-	userName := os.Getenv("SLACK_USER_NAME")
-	channel := os.Getenv("SLACK_CHANNEL")
+	apiToken := os.Getenv("TEST_SLACK_API_TOKEN")
+	webhookURL := os.Getenv("TEST_SLACK_WEBHOOK")
+	userName := os.Getenv("TEST_SLACK_USER_NAME")
+	channel := os.Getenv("TEST_SLACK_CHANNEL")
 
 	if len(userName) == 0 {
 		userName = "zatsu_monitor"
