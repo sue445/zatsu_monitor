@@ -6,10 +6,10 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Go 1.12
+      - name: Set up Go
         uses: actions/setup-go@v1
         with:
-          go-version: 1.12
+          go-version: 1.13
         id: go
 
       - name: Check out code into the Go module directory
@@ -22,6 +22,12 @@ jobs:
           go test -race
         env:
           GO111MODULE: "on"
+          TEST_CHATWORK_API_TOKEN: ${{ secrets.TEST_CHATWORK_API_TOKEN }}
+          TEST_CHATWORK_ROOM_ID:   ${{ secrets.TEST_CHATWORK_ROOM_ID }}
+          TEST_SLACK_API_TOKEN:    ${{ secrets.TEST_SLACK_API_TOKEN }}
+          TEST_SLACK_CHANNEL:      ${{ secrets.TEST_SLACK_CHANNEL }}
+          TEST_SLACK_USER_NAME:    ${{ secrets.TEST_SLACK_USER_NAME }}
+          TEST_SLACK_WEBHOOK:      ${{ secrets.TEST_SLACK_WEBHOOK }}
 
       - name: Run lint
         run: |
