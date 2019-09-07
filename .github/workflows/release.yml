@@ -7,8 +7,8 @@ on:
     tags:
       - "!**/*"
   create:
-    branches:
-      - "!**/*"
+    # branches:
+    #   - "!**/*"
     tags:
       - "v*.*.*"
 
