@@ -40,11 +40,10 @@ jobs:
           golint -set_exit_status
 
       - name: Slack Notification
-        uses: homoluctus/slatify@v1.4
+        uses: homoluctus/slatify@v1.5
         if: always()
         with:
           job_name: '*go build*'
           type: ${{ job.status }}
-          channel: ${{ secrets.SLACK_CHANNEL }}
           icon_emoji: ":octocat:"
           url: ${{ secrets.SLACK_WEBHOOK }}

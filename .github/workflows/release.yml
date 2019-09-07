@@ -7,8 +7,8 @@ on:
     tags:
       - "!**/*"
   create:
-    branches:
-      - "!**/*"
+    # branches:
+    #   - "!**/*"
     tags:
       - "v*.*.*"
 
@@ -42,11 +42,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Slack Notification
-        uses: homoluctus/slatify@v1.4
+        uses: homoluctus/slatify@v1.5
         if: always()
         with:
           job_name: '*release*'
           type: ${{ job.status }}
-          channel: ${{ secrets.SLACK_CHANNEL }}
           icon_emoji: ":octocat:"
           url: ${{ secrets.SLACK_WEBHOOK }}
