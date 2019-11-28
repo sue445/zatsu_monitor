@@ -6,7 +6,12 @@ update_configs:
 
     directory: "/"
 
-    update_schedule: "weekly"
+    update_schedule: "daily"
+
+    automerged_updates:
+      - match:
+          dependency_name: "github.com/stretchr/testify"
+          update_type: "all"
 
     default_assignees:
       - sue445
