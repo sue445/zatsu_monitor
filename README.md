@@ -5,7 +5,7 @@ Notify message to chatroom only if http status is changed from just before (e.g.
 
 ![slack](img/slack.png)
 
-[![Build Status](https://github.com/sue445/zatsu_monitor/workflows/Go/badge.svg)](https://github.com/sue445/zatsu_monitor/actions)
+[![Build Status](https://github.com/sue445/zatsu_monitor/workflows/test/badge.svg?branch=master)](https://github.com/sue445/zatsu_monitor/actions?query=workflow%3Atest)
 [![Code Climate](https://codeclimate.com/github/sue445/zatsu_monitor/badges/gpa.svg)](https://codeclimate.com/github/sue445/zatsu_monitor)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sue445/zatsu_monitor)](https://goreportcard.com/report/github.com/sue445/zatsu_monitor)
 
