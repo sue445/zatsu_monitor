@@ -6,6 +6,9 @@ on:
     tags:
       - "v*"
 
+env:
+  GO111MODULE: "on"
+
 jobs:
 
   build:
@@ -19,7 +22,7 @@ jobs:
         id: go
 
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: make package and release
         run: |
@@ -38,14 +41,14 @@ jobs:
           go get -u github.com/tcnksm/ghr
           $GOPATH/bin/ghr -n ${TAGNAME} -b "Release ${TAGNAME}" ${TAGNAME} dist/
         env:
-          GO111MODULE: "on"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Slack Notification
-        uses: homoluctus/slatify@v1.5
+        uses: homoluctus/slatify@v2.0.0
         if: always()
         with:
           job_name: '*release*'
           type: ${{ job.status }}
           icon_emoji: ":octocat:"
           url: ${{ secrets.SLACK_WEBHOOK }}
+          token: ${{ secrets.GITHUB_TOKEN }}
