@@ -44,7 +44,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Slack Notification
-        uses: homoluctus/slatify@v2.0.0
+        uses: homoluctus/slatify@master
         if: always()
         with:
           job_name: '*release*'

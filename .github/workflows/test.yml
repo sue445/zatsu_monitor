@@ -45,7 +45,7 @@ jobs:
           golint -set_exit_status
 
       - name: Slack Notification
-        uses: homoluctus/slatify@v2.0.0
+        uses: homoluctus/slatify@master
         if: always()
         with:
           job_name: '*go build*'
