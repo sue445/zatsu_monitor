@@ -1,7 +1,9 @@
 name: test
 
 on:
-  - push
+  push:
+  schedule:
+    - cron: "0 10 * * 5" # JST 19:00 (Fri)
 
 env:
   GO111MODULE: "on"
