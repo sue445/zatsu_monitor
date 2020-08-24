@@ -1,6 +1,7 @@
 name: go-mod-tidy-pr
 
 on:
+  push:
   schedule:
     - cron: "0 22 * * 0" # JST 7:00 (Mon)
 
