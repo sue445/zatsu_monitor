@@ -54,7 +54,7 @@ jobs:
           golint -set_exit_status
 
       - name: Slack Notification
-        uses: homoluctus/slatify@master
+        uses: lazy-actions/slatify@master
         if: always()
         continue-on-error: true
         with:
