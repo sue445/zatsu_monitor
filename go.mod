@@ -4,14 +4,13 @@ go 1.16
 
 require (
 	github.com/bluele/slack v0.0.0-20180528010058-b4b4d354a079
-	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/griffin-stewie/go-chatwork v0.0.0-20190318122256-de7673a5e1a7
 	github.com/joho/godotenv v1.4.0
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
-	github.com/stretchr/testify v1.7.2
+	github.com/stretchr/testify v1.7.3
 	github.com/syndtr/goleveldb v1.0.0
 	golang.org/x/net v0.0.0-20190620200207-3b0461eec859 // indirect
 	golang.org/x/sys v0.0.0-20190621203818-d432491b9138 // indirect
