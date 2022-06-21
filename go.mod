@@ -10,7 +10,7 @@ require (
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
-	github.com/stretchr/testify v1.7.3
+	github.com/stretchr/testify v1.7.4
 	github.com/syndtr/goleveldb v1.0.0
 	golang.org/x/net v0.0.0-20190620200207-3b0461eec859 // indirect
 	golang.org/x/sys v0.0.0-20190621203818-d432491b9138 // indirect
