@@ -6,9 +6,6 @@ on:
     tags:
       - "v*"
 
-env:
-  GO111MODULE: "on"
-
 jobs:
   build:
     name: Build
