@@ -6,7 +6,7 @@ require (
 	github.com/bluele/slack v0.0.0-20180528010058-b4b4d354a079
 	github.com/griffin-stewie/go-chatwork v0.0.0-20190318122256-de7673a5e1a7
 	github.com/joho/godotenv v1.4.0
-	github.com/stretchr/testify v1.8.0
+	github.com/stretchr/testify v1.8.1
 	github.com/syndtr/goleveldb v1.0.0
 	gopkg.in/yaml.v2 v2.4.0
 )
