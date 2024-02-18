@@ -34,7 +34,7 @@ jobs:
           export TAGNAME=$(echo $PUSH_EVENT_REF | sed -e 's!refs/tags/!!g')
 
           make clean package
-          go install github.com/tcnksm/ghrt@latest
+          go install github.com/tcnksm/ghr@latest
           $GOPATH/bin/ghr -n ${TAGNAME} -b "Release ${TAGNAME}" ${TAGNAME} dist/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
