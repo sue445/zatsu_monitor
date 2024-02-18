@@ -3,7 +3,8 @@ package main
 import (
 	"errors"
 	"fmt"
-	"github.com/bluele/slack"
+
+	"github.com/slack-go/slack"
 )
 
 var slackExpectedKeys = []string{"type", "check_url", "channel"}
@@ -65,29 +66,28 @@ responseTime: %f sec`
 	}
 
 	if len(s.apiToken) > 0 {
-		params := slack.ChatPostMessageOpt{
-			Username:  userName,
-			IconEmoji: iconEmoji,
-			Attachments: []*slack.Attachment{
-				{Fallback: message, Text: message, Color: attachmentColor},
-			},
-		}
-
 		api := slack.New(s.apiToken)
 
-		return api.ChatPostMessage(s.channel, "", &params)
-
+		_, _, err := api.PostMessage(
+			s.channel,
+			slack.MsgOptionUsername(userName),
+			slack.MsgOptionIconEmoji(iconEmoji),
+			slack.MsgOptionAttachments(slack.Attachment{
+				Fallback: message,
+				Text:     message,
+				Color:    attachmentColor,
+			}),
+		)
+		return err
 	} else if len(s.webhookURL) > 0 {
-		hook := slack.NewWebHook(s.webhookURL)
-		params := slack.WebHookPostPayload{
+		return slack.PostWebhook(s.webhookURL, &slack.WebhookMessage{
 			Channel:   s.channel,
 			Username:  userName,
 			IconEmoji: iconEmoji,
-			Attachments: []*slack.Attachment{
+			Attachments: []slack.Attachment{
 				{Fallback: message, Text: message, Color: attachmentColor},
 			},
-		}
-		return hook.PostMessage(&params)
+		})
 
 	} else {
 		return errors.New("Either `api_token` or `webhook_url` is required")
