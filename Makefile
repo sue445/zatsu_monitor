@@ -25,11 +25,16 @@ package:
 		else \
 			exefile="$(NAME)" ; \
 		fi ; \
-		for arch in amd64 386; do \
-			GO111MODULE=on GOOS=$$os GOARCH=$$arch go build -a -tags netgo -installsuffix netgo $(LDFLAGS) -o dist/$${os}_$${arch}/$${exefile} ; \
-			cd dist/$${os}_$${arch} ; \
-			zip ../$(NAME)_$(VERSION)_$${os}_$${arch}.zip $${exefile} ; \
-			cd ../.. ; \
+		for arch in amd64 arm64 386; do \
+			if [ $$os = "darwin" ] && [ $$arch = "386" ]; then \
+				echo "[SKIP] $$os/$$arch" ; \
+			else \
+				GO111MODULE=on GOOS=$$os GOARCH=$$arch go build -a -tags netgo -installsuffix netgo $(LDFLAGS) -o dist/$${os}_$${arch}/$${exefile} ; \
+				cd dist/$${os}_$${arch} ; \
+				zip ../$(NAME)_$(VERSION)_$${os}_$${arch}.zip $${exefile} ; \
+				echo "[DONE] $$os/$$arch" ; \
+				cd ../.. ; \
+			fi ; \
 		done; \
 	done
 
