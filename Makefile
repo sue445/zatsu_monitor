@@ -25,7 +25,7 @@ package:
 		else \
 			exefile="$(NAME)" ; \
 		fi ; \
-		for arch in amd64 386; do \
+		for arch in amd64 arm64 386; do \
 			if [ $$os = "darwin" ] && [ $$arch = "386" ]; then \
 				echo "[SKIP] $$os/$$arch" ; \
 			else \
