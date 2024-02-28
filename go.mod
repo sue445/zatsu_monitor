@@ -1,8 +1,8 @@
 module github.com/sue445/zatsu_monitor
 
-go 1.21
+go 1.22
 
-toolchain go1.21.0
+toolchain go1.22.0
 
 require (
 	github.com/griffin-stewie/go-chatwork v0.0.0-20190318122256-de7673a5e1a7
