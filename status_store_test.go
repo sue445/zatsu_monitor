@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/syndtr/goleveldb/leveldb"
 	"testing"
 )
@@ -29,7 +30,7 @@ func TestStatusStore_GetDbStatus_Exists(t *testing.T) {
 
 	actual, err := store.GetDbStatus("key")
 
-	assert.NoError(t, err)
+	require.NoError(t, err)
 	assert.Equal(t, 200, actual)
 }
 
@@ -37,6 +38,6 @@ func TestStatusStore_GetDbStatus_NotExists(t *testing.T) {
 	store := NewTestStatusStore()
 	actual, err := store.GetDbStatus("key")
 
-	assert.NoError(t, err)
+	require.NoError(t, err)
 	assert.Equal(t, NotFoundKey, actual)
 }
