@@ -58,7 +58,10 @@ func (s *StatusStore) SaveDbStatus(key string, statusCode int) error {
 	buf := make([]byte, binary.MaxVarintLen32)
 	binary.PutVarint(buf, int64(statusCode))
 
-	db.Put([]byte(key), buf, nil)
+	err = db.Put([]byte(key), buf, nil)
+	if err != nil {
+		return errors.WithStack(err)
+	}
 
 	return nil
 }

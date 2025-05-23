@@ -17,7 +17,7 @@ const (
 )
 
 func NewTestSlackNotifier(mode SlackNotifierMode) *SlackNotifier {
-	godotenv.Load()
+	godotenv.Load() // nolint:errcheck
 
 	apiToken := os.Getenv("TEST_SLACK_API_TOKEN")
 	webhookURL := os.Getenv("TEST_SLACK_WEBHOOK")

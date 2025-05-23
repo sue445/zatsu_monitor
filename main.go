@@ -102,7 +102,11 @@ func perform(name string, values map[string]string) {
 			HTTPError:         httpError,
 			ResponseTime:      responseTime,
 		}
-		notifier.PostStatus(&param)
+
+		err := notifier.PostStatus(&param)
+		if err != nil {
+			panic(err)
+		}
 	}
 }
 

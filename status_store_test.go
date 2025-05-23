@@ -20,12 +20,18 @@ func DeleteData(key string) {
 	}
 	defer db.Close()
 
-	db.Delete([]byte(key), nil)
+	err = db.Delete([]byte(key), nil)
+	if err != nil {
+		panic("Failed: OpenFile " + TestDbFile)
+	}
 }
 
 func TestStatusStore_GetDbStatus_Exists(t *testing.T) {
 	store := NewTestStatusStore()
-	store.SaveDbStatus("key", 200)
+
+	err := store.SaveDbStatus("key", 200)
+	require.NoError(t, err)
+
 	defer DeleteData("key")
 
 	actual, err := store.GetDbStatus("key")
