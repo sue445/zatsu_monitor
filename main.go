@@ -91,10 +91,7 @@ func perform(name string, values map[string]string) {
 		panic(err)
 	}
 
-	onlyCheckOnTheOrderOf100 := false
-	if values["check_only_top_of_status_code"] == "true" {
-		onlyCheckOnTheOrderOf100 = true
-	}
+	onlyCheckOnTheOrderOf100 := values["check_only_top_of_status_code"] == "true"
 
 	if isNotify(beforeStatusCode, currentStatusCode, onlyCheckOnTheOrderOf100) {
 		// When status code changes from the previous, notify
@@ -105,7 +102,11 @@ func perform(name string, values map[string]string) {
 			HTTPError:         httpError,
 			ResponseTime:      responseTime,
 		}
-		notifier.PostStatus(&param)
+
+		err := notifier.PostStatus(&param)
+		if err != nil {
+			panic(err)
+		}
 	}
 }
 

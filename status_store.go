@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/binary"
+	"github.com/cockroachdb/errors"
 	"github.com/syndtr/goleveldb/leveldb"
 )
 
@@ -27,7 +28,7 @@ func NewStatusStore(databaseFile string) *StatusStore {
 func (s *StatusStore) GetDbStatus(key string) (int, error) {
 	db, err := leveldb.OpenFile(s.databaseFile, nil)
 	if err != nil {
-		return 0, err
+		return 0, errors.WithStack(err)
 	}
 	defer db.Close()
 
@@ -36,6 +37,9 @@ func (s *StatusStore) GetDbStatus(key string) (int, error) {
 	}
 
 	data, err := db.Get([]byte(key), nil)
+	if err != nil {
+		return 0, errors.WithStack(err)
+	}
 
 	buf := bytes.NewBuffer(data)
 	statusCode, _ := binary.Varint(buf.Bytes())
@@ -47,14 +51,17 @@ func (s *StatusStore) GetDbStatus(key string) (int, error) {
 func (s *StatusStore) SaveDbStatus(key string, statusCode int) error {
 	db, err := leveldb.OpenFile(s.databaseFile, nil)
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 	defer db.Close()
 
 	buf := make([]byte, binary.MaxVarintLen32)
 	binary.PutVarint(buf, int64(statusCode))
 
-	db.Put([]byte(key), buf, nil)
+	err = db.Put([]byte(key), buf, nil)
+	if err != nil {
+		return errors.WithStack(err)
+	}
 
 	return nil
 }

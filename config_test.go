@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"testing"
 )
 
@@ -21,7 +22,7 @@ name2:
 
 	config, err := LoadConfigFromData(yamlData)
 
-	assert.NoError(t, err)
+	require.NoError(t, err)
 
 	assert.Equal(t, "http://example.com/1", config["name1"]["check_url"])
 	assert.Equal(t, "slack", config["name1"]["type"])
@@ -50,7 +51,7 @@ name2:
 
 	config, err := LoadConfigFromData(yamlData)
 
-	assert.NoError(t, err)
+	require.NoError(t, err)
 
 	assert.Equal(t, "http://example.com/1", config["name1"]["check_url"])
 	assert.Equal(t, "slack", config["name1"]["type"])
@@ -70,7 +71,7 @@ name2:
 func TestLoadConfigFromFile(t *testing.T) {
 	config, err := LoadConfigFromFile("test/config.yml")
 
-	assert.NoError(t, err)
+	require.NoError(t, err)
 
 	assert.Equal(t, "http://example.com/1", config["name1"]["check_url"])
 	assert.Equal(t, "slack", config["name1"]["type"])
@@ -78,7 +79,7 @@ func TestLoadConfigFromFile(t *testing.T) {
 	assert.Equal(t, "https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXX", config["name1"]["webhook_url"])
 	assert.Equal(t, "zatsu_monitor", config["name1"]["user_name"])
 	assert.Equal(t, "#general", config["name1"]["channel"])
-	assert.Equal(t, "", config["name1"]["check_only_top_of_status_code"])
+	assert.Empty(t, config["name1"]["check_only_top_of_status_code"])
 
 	assert.Equal(t, "http://example.com/2", config["name2"]["check_url"])
 	assert.Equal(t, "chatwork", config["name2"]["type"])

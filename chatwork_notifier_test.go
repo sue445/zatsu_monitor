@@ -9,7 +9,7 @@ import (
 )
 
 func NewTestChatworkNotifier() *ChatworkNotifier {
-	godotenv.Load()
+	godotenv.Load() // nolint:errcheck
 
 	apiToken := os.Getenv("TEST_CHATWORK_API_TOKEN")
 	roomID := os.Getenv("TEST_CHATWORK_ROOM_ID")

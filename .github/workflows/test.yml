@@ -12,6 +12,10 @@ on:
   schedule:
     - cron: "0 10 * * 5" # JST 19:00 (Fri)
 
+env:
+  # c.f. https://github.com/golangci/golangci-lint/blob/main/CHANGELOG.md
+  GOLANGCI_LINT_VERSION: v2.1
+
 jobs:
   build:
     name: Build
@@ -39,15 +43,10 @@ jobs:
           TEST_SLACK_USER_NAME:    ${{ secrets.TEST_SLACK_USER_NAME }}
           TEST_SLACK_WEBHOOK:      ${{ secrets.TEST_SLACK_WEBHOOK }}
 
-      - name: Run lint
-        run: |
-          set -xe
-          export GOPATH=`go env GOPATH`
-          export PATH=$GOPATH/bin:$PATH
-          ! gofmt -d . | grep '^'
-          go get -v -t -d ./...
-          go install golang.org/x/lint/golint@latest
-          golint -set_exit_status
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v8
+        with:
+          version: ${{ env.GOLANGCI_LINT_VERSION }}
 
       - name: Slack Notification
         uses: act10ns/slack@v2
