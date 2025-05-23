@@ -4,12 +4,12 @@ go 1.24
 
 require (
 	github.com/cockroachdb/errors v1.12.0
+	github.com/goccy/go-yaml v1.17.1
 	github.com/griffin-stewie/go-chatwork v0.0.0-20190318122256-de7673a5e1a7
 	github.com/joho/godotenv v1.5.1
 	github.com/slack-go/slack v0.16.0
 	github.com/stretchr/testify v1.10.0
 	github.com/syndtr/goleveldb v1.0.0
-	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
