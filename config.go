@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/cockroachdb/errors"
-	"gopkg.in/yaml.v2"
+	"github.com/goccy/go-yaml"
 	"os"
 )
 
