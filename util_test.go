@@ -27,9 +27,9 @@ func TestUtil_GetStatusCode_NoSuchHost(t *testing.T) {
 }
 
 func TestUtil_IsSuccessful(t *testing.T) {
-	assert.Equal(t, false, IsSuccessfulStatus(0))
-	assert.Equal(t, true, IsSuccessfulStatus(200))
-	assert.Equal(t, true, IsSuccessfulStatus(302))
-	assert.Equal(t, false, IsSuccessfulStatus(404))
-	assert.Equal(t, false, IsSuccessfulStatus(502))
+	assert.False(t, IsSuccessfulStatus(0))
+	assert.True(t, IsSuccessfulStatus(200))
+	assert.True(t, IsSuccessfulStatus(302))
+	assert.False(t, IsSuccessfulStatus(404))
+	assert.False(t, IsSuccessfulStatus(502))
 }
