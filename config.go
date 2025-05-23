@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/cockroachdb/errors"
 	"gopkg.in/yaml.v2"
-	"io/ioutil"
+	"os"
 )
 
 // Config represents config file
@@ -23,7 +23,7 @@ func LoadConfigFromData(yamlData string) (Config, error) {
 
 // LoadConfigFromFile load config from yaml file
 func LoadConfigFromFile(yamlFile string) (Config, error) {
-	buf, err := ioutil.ReadFile(yamlFile)
+	buf, err := os.ReadFile(yamlFile)
 
 	if err != nil {
 		return nil, errors.WithStack(err)
