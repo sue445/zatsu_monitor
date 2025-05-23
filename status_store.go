@@ -37,6 +37,9 @@ func (s *StatusStore) GetDbStatus(key string) (int, error) {
 	}
 
 	data, err := db.Get([]byte(key), nil)
+	if err != nil {
+		return 0, errors.WithStack(err)
+	}
 
 	buf := bytes.NewBuffer(data)
 	statusCode, _ := binary.Varint(buf.Bytes())
