@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/cockroachdb/errors"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 )
@@ -14,7 +15,7 @@ func LoadConfigFromData(yamlData string) (Config, error) {
 
 	err := yaml.Unmarshal([]byte(yamlData), &c)
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	return c, nil
@@ -25,7 +26,7 @@ func LoadConfigFromFile(yamlFile string) (Config, error) {
 	buf, err := ioutil.ReadFile(yamlFile)
 
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	return LoadConfigFromData(string(buf))

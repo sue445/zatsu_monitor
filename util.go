@@ -1,19 +1,22 @@
 package main
 
-import "net/http"
+import (
+	"github.com/cockroachdb/errors"
+	"net/http"
+)
 
 // GetStatusCode checks and returns status code for URL
 func GetStatusCode(url string) (int, error) {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		return 0, err
+		return 0, errors.WithStack(err)
 	}
 	req.Header.Add("User-Agent", "Zatsu_Monitor/"+Version+"("+Revision+")")
 
 	resp, err := http.DefaultClient.Do(req)
 
 	if err != nil {
-		return 0, err
+		return 0, errors.WithStack(err)
 	}
 	defer resp.Body.Close()
 

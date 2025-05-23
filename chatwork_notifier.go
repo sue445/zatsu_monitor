@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/cockroachdb/errors"
 	chatwork "github.com/griffin-stewie/go-chatwork"
 )
 
@@ -53,5 +54,5 @@ responseTime: %f sec`
 
 	_, err := chatwork.PostRoomMessage(c.roomID, message)
 
-	return err
+	return errors.WithStack(err)
 }
