@@ -81,7 +81,9 @@ responseTime: %f sec`
 			return errors.WithStack(err)
 		}
 		return nil
-	} else if len(s.webhookURL) > 0 {
+	}
+
+	if len(s.webhookURL) > 0 {
 		err := slack.PostWebhook(s.webhookURL, &slack.WebhookMessage{
 			Channel:   s.channel,
 			Username:  userName,
@@ -94,8 +96,7 @@ responseTime: %f sec`
 			return errors.WithStack(err)
 		}
 		return nil
-
-	} else {
-		return errors.New("Either `api_token` or `webhook_url` is required")
 	}
+
+	return errors.New("Either `api_token` or `webhook_url` is required")
 }
