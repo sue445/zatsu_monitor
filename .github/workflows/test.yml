@@ -48,6 +48,10 @@ jobs:
         with:
           version: ${{ env.GOLANGCI_LINT_VERSION }}
 
+      - uses: golang/govulncheck-action@v1
+        with:
+          go-version-file: "go.mod"
+
       - name: Slack Notification
         uses: act10ns/slack@v2
         if: always()
