@@ -4,7 +4,7 @@ go 1.25
 
 require (
 	github.com/cockroachdb/errors v1.12.0
-	github.com/goccy/go-yaml v1.19.0
+	github.com/goccy/go-yaml v1.19.1
 	github.com/griffin-stewie/go-chatwork v0.0.0-20190318122256-de7673a5e1a7
 	github.com/joho/godotenv v1.5.1
 	github.com/slack-go/slack v0.17.3
