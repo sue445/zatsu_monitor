@@ -7,7 +7,7 @@ Notify message to chatroom only if http status is changed from just before (e.g.
 
 [![Latest Version](https://img.shields.io/github/v/release/sue445/zatsu_monitor)](https://github.com/sue445/zatsu_monitor/releases)
 [![test](https://github.com/sue445/zatsu_monitor/actions/workflows/test.yml/badge.svg)](https://github.com/sue445/zatsu_monitor/actions/workflows/test.yml)
-[![Code Climate](https://codeclimate.com/github/sue445/zatsu_monitor/badges/gpa.svg)](https://codeclimate.com/github/sue445/zatsu_monitor)
+[![Maintainability](https://qlty.sh/gh/sue445/projects/zatsu_monitor/maintainability.svg)](https://qlty.sh/gh/sue445/projects/zatsu_monitor)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sue445/zatsu_monitor)](https://goreportcard.com/report/github.com/sue445/zatsu_monitor)
 
 ## Getting
