@@ -35,7 +35,7 @@ jobs:
 
           make clean package
           go install github.com/tcnksm/ghr@latest
-          $GOPATH/bin/ghr -n ${TAGNAME} -b "Release ${TAGNAME}" ${TAGNAME} dist/
+          $GOPATH/bin/ghr -n ${TAGNAME} -b "Release ${TAGNAME}" -generatenotes ${TAGNAME} dist/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
