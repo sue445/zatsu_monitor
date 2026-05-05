@@ -3,7 +3,7 @@ module github.com/sue445/zatsu_monitor
 go 1.26
 
 require (
-	github.com/cockroachdb/errors v1.12.0
+	github.com/cockroachdb/errors v1.13.0
 	github.com/goccy/go-yaml v1.19.2
 	github.com/griffin-stewie/go-chatwork v0.0.0-20190318122256-de7673a5e1a7
 	github.com/joho/godotenv v1.5.1
@@ -16,7 +16,7 @@ require (
 	github.com/cockroachdb/logtags v0.0.0-20241215232642-bb51bb14a506 // indirect
 	github.com/cockroachdb/redact v1.1.6 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/getsentry/sentry-go v0.33.0 // indirect
+	github.com/getsentry/sentry-go v0.46.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
