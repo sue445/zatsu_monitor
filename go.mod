@@ -3,7 +3,7 @@ module github.com/sue445/zatsu_monitor
 go 1.26
 
 require (
-	github.com/cockroachdb/errors v1.13.0
+	github.com/cockroachdb/errors v1.14.0
 	github.com/goccy/go-yaml v1.19.2
 	github.com/griffin-stewie/go-chatwork v0.0.0-20190318122256-de7673a5e1a7
 	github.com/joho/godotenv v1.5.1
@@ -27,7 +27,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
-	golang.org/x/sys v0.33.0 // indirect
-	golang.org/x/text v0.25.0 // indirect
+	golang.org/x/sys v0.39.0 // indirect
+	golang.org/x/text v0.32.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
